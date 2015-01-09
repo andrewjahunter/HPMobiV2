@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Profile</title>
+    <script type="text/javascript">
+        window.location.href = "index.html";
+    </script>
+</head>
+<body>
+
+
+
+    <div data-role="page" id="pg_profile" data-theme="b" data-bind="with:pages.profile.view">
+
+        <div data-role="header">
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-left ui-icon-arrow-l ui-btn-icon-notext profileView profileAddressListView profileAddressListViewBack  " style="display:none"></a>
+         
+
+            <!--<a href="#" class="ui-btn ui-btn-a ui-btn-left ui-icon-arrow-l ui-btn-icon-notext profileView profileAccountView  btnBackToPrevPage"></a>-->
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-right ui-icon-bars ui-btn-icon-notext profileView profileAccountView profileAddressListView btnOpenAppMenu"></a>
+
+            <h3 id="profileHeader">Profile</h3>
+        </div><!-- /header -->
+
+        <div role="main" class="ui-content footerFix" >
+            <div class="pgContent">
+
+                <div class="profileView profileAccountView" style="display:none">
+
+                    <div class="ui-field-contain">
+                        <div style="text-align: center; margin-left: auto; margin-right: auto; width:200px">
+                            <img data-bind="attr:{'src':$root.session.fbMd}" id="imgProfileFb" />
+                            <input id="txtFBId" type="text" data-clear-btn="true" data-bind="value: account.facebookId" placeholder="facebook id" data-mini="true" />
+                        </div>
+                    </div>
+
+
+
+                    <div class="ui-field-contain">
+                        <div>
+                            <label>
+                                Names
+                            </label>
+                        </div>
+                        <input id="txtPInfoFirstName" data-clear-btn="true" name="firstname" data-bind="value: account.firstName" placeholder="first name" />
+                        <input id="txtPInfoLastName" data-clear-btn="true" name="lastname" data-bind="value: account.lastName" placeholder="surname" />
+                    </div>
+
+
+
+                    <div class="ui-field-contain">
+                        <div>  <label>Contact Info</label></div>
+                        <input type="email" data-clear-btn="true" data-bind="value: account.email1" name="email" id="txtPInfoEmail" placeholder="email adddress" />
+                        <input type="tel" data-clear-btn="true" data-bind="value: account.mobileNumber" name="mobilenumber" id="txtPInfoMobileNumber" placeholder="mobile number" />
+                        <input type="text" data-clear-btn="true" data-bind="value: account.homeNumber" name="homenumber" id="txtHomeNumber" placeholder="home number" />
+                        <input type="text" data-clear-btn="true" data-bind="value: account.workNumber" name="worknumber" id="txtWorkNumber" placeholder="work number" />
+
+                    </div>
+
+                    <div class="ui-field-contain">
+                        <div> <label>Dates</label></div>
+                        <input type="text" id="txtAccountBirthdate" readonly placeholder="birthdate" data-bind="value: account.displayBirthDate" />
+                        <input type="text" id="txtAccountAnniversary" readonly placeholder="anniversary" data-bind="value: account.displayAnniversary" />
+                    <div style="text-align:center">
+                        <a href="#" id="btnProfileClearDates" style="font-size:small">reset dates</a>
+                    </div>
+                    </div>
+
+                    <div class="ui-field-contain">
+                        <div> <label>Other</label></div>
+                        <select id="ddlPInfoGender" data-bind="value: account.gender">
+
+                            <option value="F">Female</option>
+                            <option value="M">Male</option>
+
+                        </select>
+                        <select id="ddlPInfoMaritalStatus" data-bind="value: account.maritalStatus" name="">
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Divorced">Divorced</option>
+                            <option value="Widow">Widow</option>
+                            <option value="Widower">Widower</option>
+                        </select>
+                    </div>
+
+                    <button class="ui-btn ui-btn-a " id="btnUpdateAccount">Update</button>
+                </div>
+
+                <div class="profileView profileAddressListView" style="display:none">
+
+                    <div id="noAddressMsg" style="display:none">
+                        <div class="ui-bar ui-bar-b">
+                            <div style="text-align:center">No Address</div>
+                        </div>
+                        <div class="ui-content ui-body-g" style="text-align: center; font-size:small">
+                            You have not added any addresses under your profile
+                        </div>
+                    </div>
+
+
+
+                    <script id="myaddress-template" type="text/html">
+                        <li>
+                            <a class="myAddress" data-bind="attr: {'data-id': id}" data-transition="slide">
+                                <h5 data-bind="text: streetName + ' ' + streetNumber  "></h5>
+                                <p><strong>suburb: </strong><span data-bind="html:suburb"></span></p>
+                                <p><strong>region: </strong><span data-bind="html:region"></span></p>
+                                <p><strong>area: </strong><span data-bind="html:area"></span></p>
+                                <p><strong>city: </strong><span data-bind="html:city"></span></p>
+                                <p><strong>type: </strong><span data-bind="html:type"></span></p>
+
+                            </a>
+                            <a data-bind="attr: {'data-id': id}" href="#" class="myAddressDelete" data-position-to="window"></a>
+                        </li>
+                    </script>
+
+                    <ul data-role="listview" data-split-icon="delete" data-split-theme="e" data-inset="true" data-theme="a" id="addressList" data-bind="template: { name: 'myaddress-template', foreach: account.addresses}"></ul>
+
+
+                </div>
+
+
+
+                <div class="profileView profileNewAddress" style="display:none">
+
+
+                    <div class="ui-bar ui-bar-b">
+                        <div style="text-align:center">Confirm Address</div>
+                    </div>
+                    <div class="ui-content ui-body-g" style="text-align: center; font-size:small">
+                        Make any changes you need here and when you are happy click 'Add'. Click 'Cancel' to exit this operation.
+                    </div>
+
+                    <div class="ui-field-contain">
+                        <div>
+                            <label for="txtPAddStreetNumber">
+                                Street Number
+                            </label>
+                        </div>
+                        <input id="txtPAddStreetNumber" data-clear-btn="true" data-bind="value: newAddressToAdd.streetNumber" placeholder="street number" />
+                    </div>
+
+                    <div class="ui-field-contain">
+                        <div>
+                            <label for="txtPAddStreet">
+                                Street Name
+                            </label>
+                        </div>
+                        <input id="txtPAddStreet" data-clear-btn="true" data-bind="value: newAddressToAdd.streetName" placeholder="street name" />
+                    </div>
+
+                    <div class="ui-field-contain">
+                        <div>
+                            <label for="txtPAddSuburb">
+                                Suburb
+                            </label>
+                        </div>
+                        <input id="txtPAddSuburb" data-bind="value: newAddressToAdd.suburb" placeholder="suburb" />
+                    </div>
+
+                    <div class="ui-field-contain">
+                        <div>
+                            <label for="ddlPAddType">
+                                Address Type
+                            </label>
+                        </div>
+                        <select id="ddlPAddType" data-bind="value: newAddressToAdd.type" name="">
+
+                            <option value="Home">Home</option>
+                            <option value="Work">Work</option>
+
+                        </select>
+
+                    </div>
+                    <a href="#" class="ui-btn ui-btn-a ui-icon-plus" id="btnYesAddThisAddress">Add Address</a>
+                    <a href="#" class="ui-btn ui-btn-b ui-icon-delete  profileNewAddressBack" id="btnNoCancelAddress">Cancel</a>
+
+
+                </div>
+            </div>
+        </div>
+        
+
+        <div data-role="footer" data-theme="g" data-tap-toggle="true" data-position="fixed">
+
+
+            <div data-role="navbar" class="profileView profileAccountView" style="display:none">
+                <ul>
+                    <!--<li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-qrcode"><small>QrCode</small></div></li>-->
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-location btnProfileAddressListView "><small>Addresses</small></div></li>
+
+                </ul>
+            </div>
+
+            <div data-role="navbar" class="profileView profileAddressListView" style="display:none">
+                <ul>
+
+                    <li><div class="ui-btn ui-btn-c ui-btn-icon-top ui-icon-plus " id="btnAddNewAddress"><small>Add New Address</small></div></li>
+
+                </ul>
+            </div>
+
+
+        </div>
+
+    </div>
+</body>
+</html>
+
+
+

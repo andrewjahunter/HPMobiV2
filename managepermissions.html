@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Permissions</title>
+    <script type="text/javascript">
+        window.location.href = "index.html";
+    </script>
+</head>
+<body>
+    <div data-role="page" id="pg_managepermissions" data-theme="b" data-bind="with:pages.managePermissions.view">
+
+
+
+        <!--<div class="pgContent">-->
+
+
+
+        <div data-role="header">
+    
+
+            <!--<a href="#" class="ui-btn ui-btn-a ui-btn-left ui-icon-arrow-l ui-btn-icon-notext  btnBackToPrevPage"></a>-->
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-right ui-icon-bars ui-btn-icon-notext btnOpenAppMenu"></a>
+
+            <h1 id="msgHeader">Permissions</h1>
+
+        </div>
+
+        <div role="main" class="ui-content">
+            <div class="pgContent">
+
+                <div data-bind=" foreach:requests">
+                    <div class="ui-bar ui-bar-b" style="text-align: center">
+                        <h3>
+
+                            <a href="#" class=" ui-btn-right ui-btn-b ui-icon-carat-d ui-btn-icon-notext btnPermissionOption " data-bind="attr:{'data-id':id}"></a>
+                            <span data-bind="html: requestPerson"></span>
+                        </h3>
+                    </div>
+
+                    <div class="ui-content ui-body-g">
+                        <div><small data-bind="html:'email: ' + email + ', tel: ' + tel"></small></div>
+                        <hr />
+                        <div data-bind="html:info">
+
+                        </div>
+
+                        <hr />
+                        <div><i><small data-bind="html:'Requested on: ' + dateAdded"></small></i></div>
+                    </div>
+                </div>
+
+                <div data-role="popup" id="popupPermReqMenu" data-theme="a">
+                    <ul data-role="listview" class="ui-mini" data-inset="true" style="min-width: 210px;">
+
+                        <li><a href="#" id="btnPermReqTrusted">Make Trusted User (Leaders)</a></li>
+                        <li><a href="#" id="btnPermReqExecutive">Make Excective User (Pastors/Staff)</a></li>
+                        <li><a href="#" id="btnPermReqPublic">Remove All Permissions</a></li>
+                        <li><a href="#" id="btnPermReqDelete">Delete Request</a></li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div data-role="footer" data-theme="g" data-tap-toggle="false" style="overflow:hidden;" data-position="fixed">
+
+
+            <div data-role="navbar" >
+                <ul>
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-refresh" id="btnCheckForNewRequests"><small>Check for new requests</small></div></li>
+
+                </ul>
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+
+    <!--</div>-->
+</body>
+</html>

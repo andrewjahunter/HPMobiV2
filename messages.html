@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Messages</title>
+    <script type="text/javascript">
+        window.location.href = "index.html";
+    </script>
+</head>
+<body>
+    <div data-role="page" id="pg_messages" data-theme="b" data-bind="with:pages.messages.view">
+
+
+
+        <!--<div class="pgContent">-->
+
+
+
+        <div data-role="header">
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-left ui-icon-arrow-l ui-btn-icon-notext messageView msgReply btnMsgReplyBack"></a>
+
+            <!--<a href="#" class="ui-btn ui-btn-a ui-btn-left ui-icon-arrow-l ui-btn-icon-notext messageView messageList  btnBackToPrevPage"></a>-->
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-right ui-icon-bars ui-btn-icon-notext btnOpenAppMenu"></a>
+
+            <h1 id="msgHeader">Messages</h1>
+
+        </div>
+
+        <div role="main" class="ui-content">
+            <div class="pgContent">
+
+                <div class="messageView messageList" style="display:none">
+
+                    <div data-bind=" foreach:messages">
+                        <div data-bind="visible: !viewed" class="ui-bar ui-bar-b" style="text-align: center">
+                            <h3>
+                                <a href="#" class=" ui-btn-left ui-btn-c ui-icon-check ui-btn-icon-notext btnReadMsg" data-bind="attr:{'data-id':id}"></a>
+                                <a href="#" class=" ui-btn-right ui-btn-b ui-icon-back ui-btn-icon-notext btnReplyMsg " data-bind="attr:{'data-id':id},visible:replyEnabled"></a>
+                                <span data-bind="html: subject"></span>
+                            </h3>
+                        </div>
+                        <div data-bind="visible: viewed" class="ui-bar ui-bar-f" style="text-align: center">
+                            <h3>
+                                <a href="#" class=" ui-btn-right ui-btn-b  ui-icon-back ui-btn-icon-notext btnReplyMsg " data-bind="attr:{'data-id':id},visible:replyEnabled"></a>
+                                <span data-bind="html: subject"></span>
+
+                            </h3>
+                        </div>
+
+                        <div class="ui-content ui-body-g">
+                            <div data-bind="html:messageBody">
+
+                            </div>
+                            <!--<span data-bind="html: id"></span>-->
+                            <hr />
+                            <div><i><small data-bind="html:'Sent By: ' + sentBy + '    Sent From: ' + portalName + '    Viewed On: ' +  viewedOn"></small></i></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="messageView noMessages" style="display:none">
+                    <div class="ui-bar ui-bar-a">
+                        <div style="text-align:center">No Messages</div>
+                    </div>
+                    <div class="ui-content ui-body-g" style="font-size:small; text-align:center">
+                        <p>There are no unread messages in your profile.</p>
+                    </div>
+                </div>
+
+                <div class="messageView msgReply" style="display:none">
+                    <div class="ui-bar ui-bar-a">
+                        <div style="text-align:center">Reply</div>
+                    </div>
+                    <div class="ui-content ui-body-g" id="msgReplyHeader" style="font-size:small">
+
+                    </div>
+
+
+
+                    <div class="ui-field-contain">
+                        <textarea data-autogrow="false" rows="5" id="txtMsgReplyContent" placeholder="type reply here..."></textarea>
+                    </div>
+
+                    <button class="ui-btn ui-btn-a " id="btnSendMsgReply">Send Reply</button>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div data-role="footer" data-theme="g" data-tap-toggle="false" style="overflow:hidden;" data-position="fixed">
+
+
+            <div data-role="navbar" class="messageView noMessages messageList ">
+                <ul>
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-star" id="btnMarkAllMessagesAsRead"><small>Mark all as read</small></div></li>
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-refresh " id="btnRefreshMessages"><small>Refresh</small></div></li>
+
+
+                </ul>
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+
+    <!--</div>-->
+</body>
+</html>

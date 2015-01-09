@@ -1,0 +1,405 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Events</title>
+    <script type="text/javascript">
+        window.location.href = "index.html";
+    </script>
+</head>
+<body>
+
+
+
+    <div data-role="page" id="pg_events" data-theme="b" data-bind="with:pages.events.view">
+
+        <style>
+            .comingImg {
+                width: 25px;
+                height: 25px;
+            }
+        </style>
+
+        <div data-role="header">
+            <a href="#" class="ui-btn ui-btn-a ui-btn-left noBorderButton ui-nodisc-icon ui-icon-arrow-d ui-btn-icon-notext eventView eventQrCodeView btnEventViewBack" style="display:none"></a>
+            <a href="#" class="ui-btn ui-btn-a ui-btn-left noBorderButton ui-nodisc-icon ui-icon-arrow-l ui-btn-icon-notext eventView eventRegisterView eventAttendanceView btnEventViewBack" style="display:none"></a>
+
+
+
+            <!--<a href="#" class="ui-btn ui-btn-a ui-btn-left ui-icon-arrow-l ui-btn-icon-notext eventView  eventListView noEventsView  btnBackToPrevPage"></a>-->
+            <a href="#" class="ui-btn ui-btn-a ui-btn-right noBorderButton ui-nodisc-icon ui-icon-bars ui-btn-icon-notext btnOpenAppMenu"></a>
+
+            <h3 id="eventsHeader">Events</h3>
+        </div><!-- /header -->
+
+        <div role="main" class="ui-content">
+            <div class="pgContent">
+                <div class="eventView noEventsView" style="display:none">
+                    <div class="ui-bar ui-bar-g">
+                        <div style="text-align:center">No Events Found</div>
+                    </div>
+                    <div class="ui-content ui-body-g" style="text-align: center; font-size:small">
+                        <div>We have no record of any events that are visible in your profile.</div>
+                    </div>
+                </div>
+
+                <div class="eventView eventListView">
+
+
+
+                    <div id="btnUnsyncedEvRegInfo" style="display:none">
+                        <button class="ui-btn ui-btn-c custom-ui-mini ui-btn-inline  ui-mini " id="btnSaveUnSyncedEvRegInfo">Sync</button>
+                        <button class="ui-btn ui-btn-e custom-ui-mini ui-btn-inline ui-mini" id="btnDelUnsyncedEvRegInfo">Delete Cache</button>
+                      
+
+
+
+                    </div>
+
+
+                    <div data-bind=" foreach: events">
+                        <div class="ui-bar ui-bar-b">
+                            <div style="text-align: center" data-bind="html: eventName"></div>
+                            <div style="text-align:center">
+                                <small data-bind="html: startDate + '(' + startTime + ')' "></small>
+                            </div>
+
+                            <span data-bind="visible:(coming === 1) ? true:false">
+                                <a href="#" class=" ui-btn-right ui-icon-carat-d ui-btn-icon-notext evMore " data-bind="attr:{'data-id':eventId}"></a>
+                            </span>
+                        </div>
+
+
+                        <table width="100%">
+                            <tr>
+                                <td valign="top" width="80px">
+                                    <div style="text-align:center; margin-bottom:5px">
+                                        <img width="80" height="80" data-bind="attr: {src: imageUrl}" />
+                                    </div>
+                                </td>
+                                <td valign="top">
+                                    <div>
+                                        <table>
+                                            <tr>
+                                                <td><span style="font-size:small">Hosted By:</span></td>
+                                                <td><span style="font-size:small" data-bind="html:ownerPortalName"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span style="font-size:small">Tag Line:</span></td>
+                                                <td><span style="font-size:small" data-bind="html:tagLine"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span style="font-size:small">Venue:</span></td>
+                                                <td><span style="font-size:small" data-bind="html:eventVenue"></span></td>
+                                            </tr>
+                                            <tr data-bind="visible:(coming === 1) ? true:false  ">
+                                                <td><span style="font-size:small">Reg Code:</span></td>
+                                                <td><span style="font-size:small" data-bind="html:regCode"></span></td>
+                                            </tr>
+                                            <tr data-bind="visible:(coming === 1) ? true:false  ">
+                                                <td><span style="font-size:small">Type:</span></td>
+                                                <td><span style="font-size:small" data-bind="html:regType + '(' + ccy + cost + ')'"></span></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="ui-content ui-body-g" style="text-align: left; font-size:small" data-bind="html: summary">
+
+                                    </div>
+                                </td>
+                            </tr>
+                            <!--<tr data-bind="visible:(coming === 1) ? true:false  ">
+                                <td colspan="2">
+                                    <div  style="text-align: left; font-size:small" data-bind="visible: isVolunteer">
+                                        You have volunteered at this event. If you cannot volunteer any longer you can change this option from the menu.
+                                    </div>
+                                </td>
+                            </tr>-->
+                        </table>
+
+                        <div style="text-align:left">
+                           
+                           
+
+                            <table width="100%">
+                                <tr>
+                                    <td>
+                                        <div class="ui-btn ui-btn-e ui-mini custom-ui-mini ui-btn-inline evNotComing" data-bind="attr: {'data-id': eventId}, visible:(coming === 0) ? false:true  "><small>Not coming</small></div>
+                                        <div class="ui-btn ui-btn-c ui-mini custom-ui-mini ui-btn-inline evComing" data-bind="attr: {'data-id': eventId}, visible:(coming === 1) ? false:true  "><small>Coming</small></div>
+
+
+                                    </td>
+                                    <td align="right">
+                                        <div data-bind="visible:(coming === 0) ? true:false  ">
+                                            <img src="img/reddelete.png" class="comingImg" />
+                                        </div>
+                                        <div data-bind="visible:(coming === 1) ? true:false  ">
+                                            <img src="img/greencheck.png" class="comingImg" />
+                                        </div>
+                                        <div data-bind="visible:(coming === -1) ? true:false  ">
+                                            <img src="img/orangequestion.png" class="comingImg" />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="eventView eventRegisterView" style="display:none">
+                    <div class="ui-bar ui-bar-b" style="text-align:center" data-bind="html:selectedEvent.eventName">
+
+                    </div>
+                    <div class="ui-content ui-body-g" data-bind="html:selectedEvent.description"></div>
+
+                    <div id="viewRegWithMultipleRegTypes" style="display:none">
+                        <div class="ui-field-contain">
+                            <div>
+                                <label for="ddlRegType">
+                                    Choose registration type
+                                </label>
+                            </div>
+                            <select id="ddlRegType" name="" data-bind="options: selectedEvent.regTypesList, optionsText: 'summary', optionsValue: 'id'"></select>
+
+                        </div>
+                        <button class="ui-btn ui-btn-b  " id="btnRegWithMoreThanOneRegType">Register Now</button>
+                    </div>
+
+                    <div id="viewRegComplete" style="display:none">
+                        <div class="ui-bar ui-bar-c" style="text-align:center">
+                            Success
+                        </div>
+                        <div class="ui-content ui-body-c" id="eventRegThankYouText">
+                            <p>
+                                Thank you for registering. You will recieve a confirmation email with your
+                                registration info. Your event code is <strong>##regcode##</strong>
+                            </p>
+                        </div>
+
+                        <a href="#" class="ui-btn ui-btn-b" id="btnEventRegGoogleForm" style="display:none">Complete Online Form</a>
+                        <button class="ui-btn ui-btn-b btnEventPayNow" style="display:none">Pay Now</button>
+
+                    </div>
+
+
+
+
+
+                </div>
+
+                <div class="eventView eventAttendanceView" style="display:none">
+                    <div class="ui-bar ui-bar-b">
+                        <div style="text-align: center" data-bind="html: selectedEvent.eventName()"></div>
+                        <div style="text-align:center">
+                            <small>Attendees</small>
+                        </div>
+
+                    </div>
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a"><a href="#" id="btnEvViewAttList" class="ui-btn  ui-mini ">List</a></div>
+                        <div class="ui-block-b"><a href="#" id="btnEvViewAttScan" class="ui-btn ui-mini ">Scan</a></div>
+                        <div class="ui-block-c"><a href="#" id="btnEvViewAttDone" class="ui-btn  ui-mini ">Done</a></div>
+                    </div>
+                    <label for="evAttEnableLocalCache">Enable local cache scanning?</label>
+                    <select name="evAttEnableLocalCache" id="evAttEnableLocalCache" data-bind="value:scanType" data-role="slider" data-mini="true">
+                        <option value="1">No</option>
+                        <option value="2">Yes</option>
+                    </select>
+
+                    <div class="evAttSubView evAttListView">
+
+                        <script id="evAttList-template" type="text/html">
+                            <li>
+
+                                <table width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div style="white-space: normal" data-bind="text: firstName + ' ' + lastName"></div>
+                                            </td>
+
+                                            <td align="right"><input type="checkbox" data-role="flipswitch" data-theme="a" data-off-text="X" data-on-text="✓" data-bind="checked:attended,attr:{'data-id':personId}" class="ui-mini btnAttRegListFlipSwitch"></td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </li>
+                        </script>
+                        <ul data-role="listview" data-theme="a" data-filter="true" data-filter-placeholder="Search person..." data-inset="true" id="evAttList" data-bind="template: { name: 'evAttList-template', foreach: selectedEvent.attendees}"></ul>
+
+                    </div>
+
+
+
+                    <div class="evAttSubView evAttScanView" style="display:none">
+                        <div class="ui-content ui-body-g" style="text-align: center; font-size:small">
+                            <div>
+                                Click the 'Scan Ticket' button below to start the scan.
+                            </div><br />
+
+                        </div>
+
+                        <div class="ui-btn ui-btn-b ui-icon-camera ui-btn-icon-left " id="btnEvScanStart">
+
+                            Scan Ticket
+
+                        </div>
+                        <!--<input type="text" id="guidTEMP" />-->
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="eventView eventQrCodeView " style="display:none">
+                    <div class="ui-bar ui-bar-b">
+                        <div style="text-align:center">Ticket</div>
+                    </div>
+                    <div class="ui-content ui-body-h" style="text-align: center; font-size:small">
+                        <div>
+                            Below is your digital ticket for the event (<span id="evNameDigiTicket"></span>). You can use this code to gain access to the event if required.
+                        </div>
+
+                    </div>
+                    <div style="text-align:center;margin:0 auto">
+                        <img id="evListImgQrCode" src="" />
+
+                    </div>
+                </div>
+
+
+
+
+                <div data-role="popup" id="popupEventActionsMenu" data-theme="a">
+                    <ul data-role="listview" class="ui-mini" data-inset="true" style="min-width: 210px;">
+
+                        <li><a href="#" id="btnEventViewMap">Get Directions</a></li>
+                        <li><a href="#" id="btnEventVewGoogleResponses">View Google Form Responses</a></li>
+                        <li><a href="#" id="btnEventFillOutGoogleForm">Complete Registration</a></li>
+                        <li><a href="#" class="btnEventPayNow">Pay Now</a></li>
+                        <li><a href="#" id="btnEventViewTicket">View My Ticket</a></li>
+                        <li><a href="#" id="btnEventVolunteer">Volunteer at this event</a></li>
+                        <li><a href="#" id="btnEventEmailTicket">Email Me My Ticket</a></li>
+                        <li><a href="#" id="btnEventManageAttendance">Manage Attendance</a></li>
+
+                    </ul>
+                </div>
+
+                <div data-role="popup" id="evListPmtInstructions" data-theme="a" data-dismissible="false" style="max-width:400px;">
+                    <div data-role="header" data-theme="a">
+                        <h1>Payments</h1>
+                    </div>
+                    <div role="main" class="ui-content">
+
+
+                        <p id='evListPmtInst' style="width: 100%"></p>
+
+
+                        <a href="#" class="ui-btn ui-btn-b ui-btn-inline " data-rel="back">Ok</a>
+                    </div>
+                </div>
+
+                <div data-role="popup" id="popupEventChoosePayment" data-theme="a" data-dismissible="false" style="max-width:400px;">
+                    <div data-role="header" data-theme="a">
+                        <h1>Payment Option</h1>
+                    </div>
+                    <div role="main" class="ui-content">
+
+                        <p>How would you like to make payment for this event?</p>
+
+
+                        <a href="#" class="ui-btn ui-btn-a ui-btn-inline " id="btnPayNoCC">Other</a>
+                        <a href="#" class="ui-btn ui-btn-b ui-btn-inline " id="btnPayWithCC">Credit Card</a>
+                    </div>
+                </div>
+
+                <div data-role="popup" id="evPopupTicketError" data-dismissible="false" style="max-width:400px;">
+                    <div data-role="header" data-theme="e">
+                        <h3 style="text-align:center">Problem!</h3>
+                    </div>
+                    <div role="main" class="ui-content">
+                        <h3 class="ui-title">There is a problem with this ticket</h3>
+                        <p id="ticketError"></p>
+                        <a href="#" class="ui-btn  ui-btn-inline ui-btn-a" data-rel="back">Ok</a>
+                        <a href="#" class="ui-btn   ui-btn-inline ui-btn-e" id="btnTicketOverride">Override</a>
+                    </div>
+                </div>
+
+                <div data-role="popup" id="popupEvLocalScanSave" data-theme="b" data-dismissible="false" style="max-width:400px;">
+                    <div data-role="header" data-theme="b">
+                        <h1>Sync Now?</h1>
+                    </div>
+                    <div role="main" class="ui-content">
+
+                        <p>You enabled local cache scanning and need to sync the data to our servers.</p>
+                        <p>You need to ensure you are connected to the internet in order to complete this request. </p>
+                        <p>Would you like to sync the data to our servers now?</p>
+
+                        <a href="#" class="ui-btn ui-btn-b ui-btn-inline ui-mini" id="btnEvScanSaveLater">Sync later</a>
+                        <a href="#" class="ui-btn ui-btn-a ui-btn-inline ui-mini" id="btnEvScanSaveNow">Sync now</a>
+                    </div>
+                </div>
+
+
+                <div data-role="popup" id="popupDeleteDirtyEvRegItems" data-dismissible="false" style="max-width:400px;">
+                    <div data-role="header" data-theme="e">
+                        <h3 style="text-align:center">Delete Changes?</h3>
+                    </div>
+                    <div role="main" class="ui-content">
+                        <p>WARNING! If you delete your event cache, any registration items you have updated will not be synced to the database.</p>
+                        <p>Are you sure you want to delete the event cache?</p>
+                        <a href="#" class="ui-btn   ui-btn-inline ui-btn-b" data-rel="back">No</a>
+                        <a href="#" class="ui-btn   ui-btn-inline ui-btn-e" id="btnYesDeleteDirtyEvRegItems">Yes, delete</a>
+                    </div>
+                </div>
+
+                <div data-role="popup" id="evListGoogleFormResponsesPopup" data-dismissible="false">
+                    <div data-role="header" data-theme="b" class="ui-corner-top">
+                        <h1>Responses</h1>
+                    </div>
+                    <div role="main" class="ui-content">
+
+                        <div class="ui-content ui-body-h" style="text-align: center; font-size:small">
+                            <div>These are the answers your provided to the online form associated with this event.</div>
+                        </div>
+                        <div id='evListGoogleRes' style="width: 100%; font-size:small"></div>
+                        <a href="#" class="ui-btn ui-btn-b ui-btn-inline " data-rel="back">Ok</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div data-role="footer" data-theme="g" data-tap-toggle="false" style="overflow:hidden;" data-position="fixed">
+
+
+            <div data-role="navbar" class="eventView eventListView eventRegisterView">
+                <ul>
+
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-refresh btnReloadEvents "><small>Refresh Event List</small></div></li>
+
+                </ul>
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+</body>
+</html>
+
+
+

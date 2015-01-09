@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+
+
+    <script type="text/javascript">
+        window.location.href = "index.html";
+    </script>
+</head>
+<body>
+    <div data-role="page" id="pg_home" data-theme="b">
+
+
+
+        <!--<div class="pgContent">-->
+
+
+
+        <div data-role="header">
+            <a href="#" class="ui-btn ui-btn-a ui-btn-right ui-icon-bars ui-btn-icon-notext btnOpenAppMenu"></a>
+
+            <h1>Home</h1>
+
+        </div>
+
+        <div role="main" class="ui-content">
+            <div class="pgContent">
+
+
+                <div style="text-align:center">
+                    <h4 data-bind="text:session.displayName"></h4>
+                    <img data-bind="attr:{'src':session.fbLg}" style="display:block; margin-left:auto;margin-right:auto" />
+                </div>
+
+
+                <div style="text-align:center ">
+                    <button type="button" class="ui-btn ui-btn-b ui-btn-inline " id="btnHomeSignOut">Sign Out</button>
+                    <!--<button type="button" class="ui-btn ui-btn-b ui-btn-inline " id="btnHomeTestPeople">Search Person Test</button>
+                   
+                    <input type="text" id="smsIntent" value="INTENT"  />
+                    <input type="text" id="smsNumbers" value="0836274723" />
+                    <button type="button" class="ui-btn ui-btn-b ui-btn-inline " id="btnHomeTestSMS">TEST SMS</button>-->
+
+                    <h4>Debugger Tests</h4>
+                    <div>Signed Into: <span data-bind="html:session.activeSession.portalName"></span></div>
+                    <div>PortalId: <span data-bind="html:session.activeSession.portalId"></span></div>
+                    <div>SessionKey: <span data-bind="html:session.activeSession.sessionKey"></span></div>
+
+                    <div>AuthKey: <span data-bind="html:session.auth.authKey"></span></div>
+
+                </div>
+            </div>
+        </div>
+
+        <div data-role="footer" data-tap-toggle="false" style="overflow:hidden;" data-position="fixed">
+
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#" class="ui-btn ui-btn-h btnGoTemp" data-icon="user"></a></li>
+                    <li><a href="#" class="ui-btn ui-btn-h btnGoTemp" data-icon="mail"></a></li>
+                    <li><a href="#" class="ui-btn ui-btn-a btnGoNews" data-icon="comment"></a></li>
+                    <li><a href="#" class="ui-btn ui-btn-a btnGoSettings" data-icon="phone"></a></li>
+
+                </ul>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+    <!--</div>-->
+</body>
+</html>

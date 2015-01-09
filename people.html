@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Search</title>
+    <script type="text/javascript">
+        window.location.href = "index.html";
+    </script>
+</head>
+<body>
+
+
+
+    <div data-role="page" id="pg_people" data-theme="b" data-bind="with:pages.people.view">
+
+        <div data-role="header">
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-left ui-icon-arrow-d ui-btn-icon-notext peopleView btnSearchPerson peopleAddNewView " style="display:none"></a>
+
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-left ui-icon-arrow-l ui-btn-icon-notext peopleView peopleDuplicateView peopleDupViewBack" style="display:none"></a>
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-left ui-icon-arrow-l ui-btn-icon-notext peopleView selectedPersonView selectedPersonViewBack" style="display:none"></a>
+
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-left ui-icon-arrow-l ui-btn-icon-notext peopleView peopleSearchView btnBackToPrevPage"></a>
+
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-right ui-icon-bars ui-btn-icon-notext btnOpenAppMenu"></a>
+
+            <h3 id="peopleHeader">Search</h3>
+        </div><!-- /header -->
+
+        <div role="main" class="ui-content">
+            <div class="pgContent">
+
+                <div class="peopleView peopleSearchView">
+                    <script id="people-template" type="text/html">
+                        <li>
+                            <a data-bind="attr: {href: '#','data-id':id,'data-name':formattedDisplay}" class="btnPeopleSearchSelect">
+                                <table>
+                                    <tr>
+                                        <td width="50px">
+                                            <img data-bind="attr:{'src':'https://graph.facebook.com/' + facebookId + '/picture?type=square'}" />
+                                        </td>
+                                        <td>
+                                            <h5 data-bind="text: firstName + ' ' + lastName"></h5>
+                                            <div> <small data-bind="html:mobileNumber"></small></div>
+                                            <div><small data-bind="html:email"></small></div>
+                                        </td>
+                                    </tr>
+                                </table>
+
+
+                            </a>
+                            <a data-bind="attr: {href: '#','data-id':id}" class="btnPeopleSearchView">
+
+                            </a>
+                        </li>
+                    </script>
+
+
+                    <form class="ui-filterable">
+                        <input id="searchperson-input" data-type="search" placeholder="start typing here...">
+                    </form>
+
+                    <ul data-role="listview" data-split-icon="eye" data-split-theme="b" class="ui-mini" data-filter="true" data-input="#searchperson-input" data-inset="true" data-theme="b" id="peopleList" data-bind="template: { name: 'people-template', foreach: people}"></ul>
+
+
+                </div>
+
+                <div class="peopleView peopleAddNewView" style="display:none">
+
+                    <div class="ui-field-contain">
+                        <div>
+                            <label for="txtPeopleFirstName">
+                                First Name*
+                            </label>
+                        </div>
+                        <input id="txtPeopleFirstName" data-clear-btn="true" data-bind="value: newPerson.firstName" placeholder="enter first name" />
+
+                        <div>
+                            <label for="txtPeopleoLastName">
+                                Last Name*
+                            </label>
+                        </div>
+                        <input id="txtPeopleLastName" data-clear-btn="true" data-bind="value: newPerson.lastName" name="lastname" placeholder="enter last name" />
+
+                        <div> <label for="txtPeopleEmail">Email</label></div>
+                        <input type="email" data-clear-btn="true" data-bind="value: newPerson.email1" id="txtPeopleEmail" value="" placeholder="enter email" />
+
+
+                        <div><label for="txtPeopleMobileNumber">Mobile</label></div>
+                        <input type="tel" data-clear-btn="true" data-bind="value: newPerson.mobileNumber" id="txtPeopleMobileNumber" value="" placeholder="enter mobile number" />
+                    </div>
+                    <button class="ui-btn ui-btn-b " id="btnAddPerson">Add Person</button>
+                </div>
+
+                <div class="peopleView peopleDuplicateView" style="display:none">
+                    <script id="duplicate-template" type="text/html">
+                        <li data-icon="eye">
+                            <a data-bind="attr: {href: '#','data-id':id}" class="selectDuplicate">
+
+                                <table>
+                                    <tr>
+                                        <td width="50px"><img data-bind="attr:{'src':facebookProfilePicSq}" /></td>
+                                        <td>
+                                            <h5 data-bind="text: firstName + ' ' + lastName"></h5>
+                                            <div><small data-bind="html:mobileNumber"></small></div>
+                                            <div><small data-bind="html:email1"></small></div>
+                                        </td>
+                                    </tr>
+                                </table>
+
+
+                            </a>
+                        </li>
+                    </script>
+
+
+                    <div class="ui-content ui-body-g" style="font-size:small">
+                        <p>Please confirm if the person you are trying to add is in the list below. If not, click the 'Add new person' button below</p>
+
+                    </div>
+                    <ul data-role="listview" class="ui-mini" data-inset="true" data-theme="b" id="peopleDuplicateList" data-bind="template: { name: 'duplicate-template', foreach: duplicates}"></ul>
+
+
+                    <div data-role="popup" id="popupDupFound" data-theme="a" data-dismissible="false" style="max-width: 400px;">
+                        <div data-role="header" data-theme="a">
+                            <h1>Message</h1>
+                        </div>
+                        <div role="main" class="ui-content ui-body-a">
+                            <p>
+                                The person you are adding may already exist in the database.
+                            </p>
+                            <p>Please check the list below for the person you are trying to add. Tap on the person if you think it could be the person you are looking for.</p>
+                            <p>Click 'Create new account' if the person you are looking for is not in the list.</p>
+                            <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-rel="back">Ok</a>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="peopleView selectedPersonView" style="display:none">
+                    <div style="text-align:center">
+                        <img data-bind="attr:{'src':selectedPerson.fbPicUrl}" style="display:block; margin-left:auto;margin-right:auto" />
+                        <h4 data-bind="text:selectedPerson.firstName() + ' ' + selectedPerson.lastName()"></h4>
+                        <div>Mobile: <span data-bind="html:selectedPerson.mobileNumber"></span></div>
+
+                        <div>Email: <span data-bind="html:selectedPerson.email"></span></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+
+        <div data-role="footer" data-theme="g" data-tap-toggle="false" style="overflow:hidden;" data-position="fixed">
+
+
+            <div data-role="navbar" class="peopleView peopleSearchView">
+                <ul>
+                    <!--<li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-gear"><small>Holder</small></div></li>
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-refresh "><small>Holder</small></div></li>-->
+                    <li><div class="ui-btn ui-btn-c ui-btn-icon-top ui-icon-plus btnAddNewPerson"><small>Add Person</small></div></li>
+                </ul>
+            </div>
+
+            <div data-role="navbar" class="peopleView peopleAddNewView" style="display:none">
+                <ul>
+                    <!--<li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-gear"><small>Holder</small></div></li>
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-refresh "><small>Holder</small></div></li>-->
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-search btnSearchPerson"><small>Search for person</small></div></li>
+                </ul>
+            </div>
+
+            <div data-role="navbar" class="peopleView selectedPersonView" style="display:none">
+                <ul>
+                  
+
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-check " id="btnPeopleMapExisting"><small id="selectPersonText">Choose</small></div></li>
+                </ul>
+            </div>
+
+            <div data-role="navbar" class="peopleView peopleDuplicateView" style="display:none">
+                <ul>
+                    <!--<li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-arrow-l peopleDupViewBack"><small>Back</small></div></li>-->
+
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-plus " id="btnDuplicateNotHere"><small>Create new account</small></div></li>
+                </ul>
+            </div>
+
+
+        </div>
+
+    </div>
+</body>
+</html>
+
+
+

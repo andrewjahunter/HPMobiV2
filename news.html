@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+
+
+    <script type="text/javascript">
+        window.location.href = "index.html";
+    </script>
+</head>
+<body>
+    <div data-role="page" id="pg_news" data-theme="b" data-bind="with:pages.news.view">
+
+
+
+        <!--<div class="pgContent">-->
+
+
+
+        <div data-role="header">
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-left ui-icon-plus ui-btn-icon-notext  btnGoToAddNewsFlash" style="display:none"></a>
+
+            <!--<a href="#" class="ui-btn ui-btn-a ui-btn-left ui-icon-arrow-l ui-btn-icon-notext newsView newsFeed btnBackToPrevPage"></a>-->
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-left ui-icon-arrow-l ui-btn-icon-notext newsView newsItem btnNewsItemBackToFeed" style="display:none"></a>
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-left ui-icon-arrow-d ui-btn-icon-notext newsView newsFlashAdd btnAddNewsBackToNews" style="display:none"></a>
+
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-right ui-icon-bars ui-btn-icon-notext  btnOpenAppMenu "></a>
+
+            <h1 id="newsHeader">News</h1>
+
+        </div>
+
+        <div role="main" class="ui-content">
+            <div class="pgContent">
+
+                <div class="noNews newsView" style="display:none">
+
+                    <div class="ui-bar ui-bar-a">
+                        <div style="text-align:center">Important!</div>
+                    </div>
+                    <div class="ui-content ui-body-g" style="font-size:small">
+                        <p>We were not able to find any news items that match your subscription profile.</p>
+                        <p>You will only recieve news from churches/ministries that you have subscribed to. Please check your subscription profile.</p>
+
+                        <div class="ui-btn ui-btn-g btnGoToSubs ui-mini">Manage Subscriptions</div>
+                    </div>
+
+                </div>
+
+
+                <div class="newsFeed newsView">
+                    <div class="ui-bar-g btnRefreshNewsFeeds preNewsContent"  style="text-align:center; white-space:normal; margin-bottom:3px; display:none"><small>click here to refresh news</small></div>
+
+
+                    <div data-bind="foreach:newsItems">
+                        <div class="ui-corner-all ">
+                            <div class="ui-bar ui-bar-b" style="padding:5px; height:50px; height:100%">
+                                <table width="100%" >
+                                    <tr>
+                                        <td><div data-bind="html:title, attr:{'data-id':id}" class="newsFeedClick" style="text-align:center"></div></td>
+                                        <td align="right">
+                                            <div>
+                                                <button class="noBorderButton ui-mini ui-nodisc-icon ui-btn ui-btn-a ui-icon-share ui-btn-icon-notext btnNewsItemShareFromList" data-bind="attr:{'data-id':id}"></button>
+                                            </div>
+                                            
+
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!--<h4>
+                                    
+
+
+                                </h4>-->
+
+                            </div>
+                            <div class="ui-body ui-body-a newsFeedClick" data-bind="attr:{'data-id':id}">
+                                <div class="ui-content ">
+                                    <div data-bind="visible:displayHeader">
+                                        <div data-bind="visible:headerIsImage">
+                                            <div>
+                                                <img style="max-height:200px; max-width:100%; display:block; margin-left:auto;margin-right:auto" data-bind="attr: {src: headerImgUrl}" />
+                                            </div>
+                                        </div>
+                                        <div data-bind="visible:!headerIsImage" style="max-width: 300px; max-height: 300px; margin-left: auto; margin-right: auto; ">
+                                            <div style="height:100%; width:100% ">
+                                                <iframe width="100%" height="100%" data-bind="attr: {src: headerVideoUrl}" frameborder="0" allowfullscreen></iframe>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div>
+                                        <small data-bind="html:tagLine"></small>
+                                    </div>
+
+
+                                </div>
+
+
+                                <div>
+                                    <i>  <small data-bind="html:'Published on:' + publishStart + ' in ' + channelName + ' by ' + portalName"></small></i>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="ui-btn ui-btn-b ui-mini preNewsContent" id="btnLoadMoreNewsItems" style="display:none">Load more...</div>
+
+                </div>
+
+                <div class="newsItem newsView" style="display:none">
+
+
+
+                    <div data-bind="visible:selectedItem.displayHeader">
+
+                        <div data-bind="visible:selectedItem.headerIsImage()">
+                            <div style="text-align:center; margin:5px">
+                                <img style="max-width:100%; height:auto" data-bind="attr: {src: selectedItem.headerImgUrl}" />
+                            </div>
+                        </div>
+
+                        <div data-bind="visible:!selectedItem.headerIsImage()">
+                            <iframe width="100%" height="280" data-bind="attr: {src: selectedItem.headerVideoUrl}" frameborder="0" allowfullscreen></iframe>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="ui-bar ui-bar-h">
+                        <div style="text-align:center;" data-bind="html:selectedItem.title"></div>
+                    </div>
+
+                    <div class="ui-content  ui-corner-all customContent" data-bind="html:selectedItem.tagLine" style="font-size: small;text-align:justify; margin-bottom: 5px">
+
+                    </div>
+
+                    <div class="ui-content" data-bind="html:selectedItem.content" style="font-size: small;text-align:justify"></div>
+                    <div style="text-align:center">
+                        <a href="#" class="ui-btn ui-btn-a ui-btn-inline ui-mini btnNewsItemWebUrl">View on Web</a>
+                    </div>
+                    <hr />
+                    <div style="font-size:small; font-style:italic">
+                        <div><strong>Country: </strong><span data-bind="html:selectedItem.country"></span></div>
+                        <div><strong>Type: </strong><span data-bind="html:selectedItem.type"></span></div>
+                        <div><strong>Channel: </strong><span data-bind="html:selectedItem.channelName"></span></div>
+                    </div>
+
+                </div>
+
+                <div class="newsFlashAdd newsView" style="display:none">
+
+                    <div class="ui-bar ui-bar-a">
+                        <div style="text-align:center">Send News</div>
+                    </div>
+                    <div class="ui-content ui-body-g" style="font-size:small; text-align:center">
+                        <p>Send a news flash to everyone subscribed to this database.</p>
+                    </div>
+
+                    <div class="ui-field-contain">
+                        <div> <label for="ddlAddNewsChooseChannel">Choose Channel</label></div>
+                        <select id="ddlAddNewsChooseChannel" data-bind="options: refData.channels,optionsText:'name',optionsValue:'id'"></select>
+
+                    </div>
+                    <!--, -->
+                    <div class="ui-field-contain">
+                        <!--<label for="txtAddNewsContent">News Content</label>-->
+                        <textarea rows="6" id="txtAddNewsContent" placeholder="type news item here"></textarea>
+                    </div>
+
+                    <button class="ui-btn ui-btn-a " id="btnAddNewNewsFlash">Send Newsflash</button>
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+       
+
+        <div data-role="footer" data-theme="g" data-tap-toggle="false"  data-position="fixed">
+
+            <!--<div data-role="navbar" class="newsFeed noNews  newsView">
+                <ul>
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-subscribe btnGoToSubs"><small>Subscriptions</small></div></li>
+
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-refresh btnRefreshNewsFeeds"><small>Refresh</small></div></li>
+                    <li><div class="ui-btn ui-btn-c ui-btn-icon-top ui-icon-plus btnGoToAddNewsFlash "><small>Share News</small></div></li>
+
+
+                </ul>
+            </div>-->
+
+
+            <div data-role="navbar" class="newsItem  newsView " style="display:none">
+                <ul>
+
+                    <!--<li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-subscribe btnGoToSubs"><small>Subscriptions</small></div></li>-->
+                    <li><div class="ui-btn ui-btn-c ui-btn-icon-top ui-icon-share ui-nodisc-icon" id="btnNewsItemShare2"><small>Share This</small></div></li>
+                    <!--<li><div class="ui-btn ui-btn-c ui-btn-icon-top ui-icon-plus btnGoToAddNewsFlash "><small>Share News</small></div></li>-->
+
+
+                </ul>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+    <!--</div>-->
+</body>
+</html>

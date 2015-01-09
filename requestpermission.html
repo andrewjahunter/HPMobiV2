@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Subs</title>
+    <script type="text/javascript">
+        window.location.href = "index.html";
+    </script>
+</head>
+<body>
+
+
+
+    <div data-role="page" id="pg_requestpermission" data-theme="b" data-bind="with:pages.requestPermission.view">
+
+        <div data-role="header">
+            <!--<a href="#" class="ui-btn ui-btn-a ui-btn-left ui-icon-arrow-l ui-btn-icon-notext peopleView peopleSearchView btnBackToPrevPage"></a>-->
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-right ui-icon-bars ui-btn-icon-notext btnOpenAppMenu"></a>
+            <h3>Permission</h3>
+        </div><!-- /header -->
+
+        <div role="main" class="ui-content">
+            <div class="pgContent">
+                <div class="ui-bar ui-bar-e">
+                    <div style="text-align:center">Permission Required</div>
+                </div>
+                <div class="ui-content ui-body-a" style="font-size:small; text-align:center">
+                    <p>
+                        Your account is not permitted to access this feature in this database. To request access, click the button below. An
+                        administrator will need to grant you the required permissions
+                    </p>
+                </div>
+
+                <p data-bind="html:msg" style="text-align:center" class="ui-content ui-body-g">
+
+                </p>
+
+                <button class="ui-btn ui-btn-a " id="btnRequestPermission">Request Permission</button>
+            </div>
+             </div>
+
+
+     
+
+    </div>
+</body>
+</html>
+
+
+

@@ -1,0 +1,257 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Find Church</title>
+    <script type="text/javascript">
+        window.location.href = "index.html";
+    </script>
+</head>
+<body>
+
+
+
+    <div data-role="page" id="pg_findachurch" data-theme="b" data-bind="with:pages.findachurch.view">
+
+
+
+        <div data-role="header">
+            <a href="#" class="ui-btn ui-btn-a noBorderButton ui-nodisc-icon ui-btn-left ui-icon-arrow-d ui-btn-icon-notext fcView fcMissingGeoStruc fcMissingGeoStrucBack " style="display:none"></a>
+
+            <a href="#" class="ui-btn ui-btn-a noBorderButton ui-nodisc-icon ui-btn-left ui-icon-arrow-d ui-btn-icon-notext fcView fcMissingChurchView btnFacShowSearchDown " style="display:none"></a>
+            <a href="#" class="ui-btn ui-btn-a noBorderButton ui-nodisc-icon ui-btn-left ui-icon-arrow-l ui-btn-icon-notext fcView fcListView btnFcListViewBack" style="display:none"></a>
+
+
+
+            <!--<a href="#" class="ui-btn ui-btn-a ui-btn-left ui-icon-arrow-l ui-btn-icon-notext fcView   fcSearchView  btnBackToPrevPage"></a>-->
+            <a href="#" class="ui-btn ui-btn-a noBorderButton ui-nodisc-icon ui-btn-right ui-icon-bars ui-btn-icon-notext btnOpenAppMenu"></a>
+
+            <h3 id="findachurchHeader">Find Church</h3>
+        </div><!-- /header -->
+
+        <div role="main" class="ui-content">
+            <div class="pgContent">
+
+                <div class="fcView fcSearchView" style="display:none">
+
+
+                    <div class="ui-content ui-body-g" style="text-align: center; font-size:small">
+                        Refine your search by selecting from any of the filters below and click 'Find Churches'
+                        <div><small>(visit <strong>findachurch.godochurch.com</strong> for the web version)</small></div>
+                    </div>
+
+                    <div class="ui-field-contain churchSearchCountry churchSearchFilter">
+                        <select id="ddlGeoCountry" data-bind="options: countriesSearch,optionsCaption: 'Filter by country...'"></select>
+                        <a href="#" class="btnLinkChurchSearchMissingData">My country is not here</a>
+                    </div>
+
+                    <div class="ui-field-contain churchSearchRegion churchSearchFilter" style="display:none">
+                        <select id="ddlGeoRegion" data-bind="options: regionsSearch,optionsText:'name',optionsValue:'name',  optionsCaption: 'Region/Provice...'"></select>
+                        <a href="#" class="btnLinkChurchSearchMissingData">My region/province is not here</a>
+                    </div>
+
+                    <div class="ui-field-contain churchSearchCity churchSearchFilter" style="display:none">
+
+                        <select id="ddlGeoCity" data-bind="options: citiesSearch,optionsText:'name',optionsValue:'name',  optionsCaption: 'Area/city/town...'"></select>
+                        <a href="#" class="btnLinkChurchSearchMissingData">My city/area/town is not here</a>
+                    </div>
+
+                    <button type="button" class="ui-btn ui-btn-a " id="btnFindChurches">Find Churches</button>
+
+                </div>
+
+
+                <div class="fcView fcListView" style="display:none">
+
+                    <div data-bind="foreach:churchList">
+                        <div class="ui-bar ui-bar-b" style="text-align:center" data-bind="html:name">
+
+                        </div>
+
+                        <div class="ui-content" style=" font-size:small">
+                            <table width="100%" style="font-size:small">
+
+                                <tr>
+                                    <td><strong>Church Family:</strong></td>
+                                    <td>
+                                        <div data-bind="html:familyName"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Part Of:</strong></td>
+                                    <td>
+                                        <div data-bind="html:orgName"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Country</strong></td>
+                                    <td>
+                                        <div data-bind="html:geoCountry"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Region</strong></td>
+                                    <td>
+                                        <div data-bind="html:geoRegion"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Street</strong></td>
+                                    <td>
+                                        <div data-bind="html:geoStreetName"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Other Info</strong></td>
+                                    <td>
+                                        <div data-bind="html:geoOtherInfo"></div>
+                                    </td>
+                                </tr>
+
+
+                            </table>
+
+                            <div style="text-align:center">
+                                <strong>Service Times</strong>
+                            </div>
+
+                            <div class="ui-content ui-body-g">
+                                <table width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Time</th>
+                                            <th>Contact</th>
+                                            <th>Tel</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody data-bind="foreach:services">
+                                        <tr>
+                                            <td align="center">
+                                                <div data-bind="html:serviceTime"></div>
+                                            </td>
+                                            <td align="center">
+                                                <div data-bind="html:contactPerson"></div>
+                                            </td>
+                                            <td align="center">
+                                                <div data-bind="html:contactTelNumber"></div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+
+                            <div style="text-align:center">
+
+                                <a href="#" class="btnViewChurchAddress" data-bind="attr:{'data-id':geoLat + '|' + geoLng + '|' + id}">View Address</a>
+
+
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+
+
+                </div>
+
+                <div class="fcView fcMissingGeoStruc" style="display:none">
+                    <div class="ui-bar ui-bar-b">
+                        <div style="text-align:center">Geographic Data Missing</div>
+                    </div>
+                    <div class="ui-content ui-body-g" style="font-size:small">
+                        <p>
+                            All our geographic data is dynamically generated from Google's mapping services based on
+                            real time data from churches that have been added to the database. What does this mean?
+                        </p>
+                        <ol>
+                            <li>
+                                <p>
+                                    If the church you are looking for has NOT been added to the database the geographic data (country, regions, city)
+                                    will not be available here. Check with your church whether they have been added to the database.
+                                </p>
+                            </li>
+
+                            <li>
+                                <p>
+                                    This search uses Google's geo mapping tools. On rare occasions Google tags certain locations with different names
+                                    than what is expected. Your church office can change this.
+                                </p>
+                            </li>
+                        </ol>
+
+                    </div>
+                </div>
+
+
+                <div class="fcView fcMissingChurchView" style="display:none">
+                    <div class="ui-bar ui-bar-b">
+                        <div style="text-align:center">Missing Church?</div>
+                    </div>
+                    <div class="ui-content ui-body-g" style="font-size:small">
+                        <p>There are three reasons why you may not be able to find your church in this list.</p>
+                        <ol>
+                            <li>
+                                <p>
+                                    Each church manages their church info themselves using the Godochurch (www.godochurch.com) data services.
+                                    Your church may not be added to the database.
+                                </p>
+                            </li>
+                            <li>
+                                <p>The search filters you entered were to narrow. Try to expand your search to include your church.</p>
+                            </li>
+                            <li>
+                                <p>
+                                    This search uses Google's geo mapping tools. On rare occasions Google tags certain locations with different names
+                                    than what is expected. Your church office can change this.
+                                </p>
+                            </li>
+                        </ol>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div data-role="footer" data-theme="g" data-tap-toggle="false" style="overflow:hidden;" data-position="fixed">
+
+
+            <div data-role="navbar" class="fcView fcSearchView fcMissingGeoStruc" style="display:none">
+                <ul>
+                 
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-recycle" id="btnResetSerch"><small>Reset Search</small></div></li>
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-refresh" id="btnReloadGeoStructure"><small>Reload Search Data</small></div></li>
+
+                </ul>
+            </div>
+
+            <div data-role="navbar" class="fcView fcMissingChurchView" style="display:none">
+                <ul>
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-refresh btnFacShowSearchDown"><small>Search Again</small></div></li>
+
+                </ul>
+            </div>
+
+            <div data-role="navbar" class="fcView fcListView" style="display:none">
+                <ul>
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-navigation" id="btnViewChurchesOnMap"><small>Show Map View</small></div></li>
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-question" id="btnFacWhereIsMyChurch"><small>Where is my church</small></div></li>
+
+                </ul>
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+</body>
+</html>
+
+
+

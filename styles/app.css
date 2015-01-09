@@ -1,0 +1,165 @@
+﻿body {
+}
+
+.pgContents {
+/*width:250px;*/
+margin-left:auto;
+margin-right:auto;
+min-height:400px;
+}
+
+
+.footerFix {
+margin-bottom:30px;
+}
+
+.noBorderButton {
+border:none !important;
+}
+.custom-ui-mini {
+padding:5px;
+}
+
+
+
+
+
+
+.ui-autocomplete { position: absolute; cursor: default;z-index:999 !important;}
+
+.customContent {
+background-color:#f5f0f0
+}
+
+.iscrollcontent {
+    padding: 0 !important;
+}
+ 
+.ui-listview {
+    margin: 0 !important;
+}
+ 
+.example-wrapper, .example-wrapper div.iscroll-scroller {
+    width: 100% !important;
+}
+
+ 
+
+.slideshow .bx-wrapper {  background-color: #d6dbe9 }
+
+/*.slideshow {  background-color: #ffffff; border-top: 1px solid #ffffff; border-bottom: 1px solid #ffffff; }
+.slideshow ul { list-style-type: none; margin: 0; padding: 0; }
+.slideshow li { width: 999px; height: 404px; margin: 0; border-left: 1px solid #ffffff; }
+.slideshow .bx-wrapper { position: relative; width: 3000px; top: 0px; left: 50%; margin-left: -1500px; }*/
+
+/*Custom Icons*/
+.ui-icon-save:after {
+	background-image: url("images/cust-icons-svg/save.svg"); 
+}
+.ui-nosvg .ui-icon-save:after {
+	background-image: url("images/cust-icons-png/save.png");
+}
+.ui-icon-arrow-rr:after {
+	background-image: url("images/cust-icons-svg/arrow-rr.svg"); 
+}
+.ui-nosvg .ui-icon-arrow-rr:after {
+	background-image: url("images/cust-icons-png/arrow-rr.png");
+}
+.ui-icon-group:after {
+	background-image: url("images/cust-icons-svg/group.svg"); 
+}
+.ui-nosvg .ui-icon-group:after {
+	background-image: url("images/cust-icons-png/group.png");
+}
+.ui-icon-news:after {
+	background-image: url("images/cust-icons-svg/news.svg"); 
+}
+.ui-nosvg .ui-icon-news:after {
+	background-image: url("images/cust-icons-png/news.png");
+}
+.ui-icon-searchpeople:after {
+	background-image: url("images/cust-icons-svg/searchpeople.svg"); 
+}
+.ui-nosvg .ui-icon-searchpeople:after {
+	background-image: url("images/cust-icons-png/searchpeople.png");
+}
+.ui-icon-newsconfig:after {
+	background-image: url("images/cust-icons-svg/newsconfig.svg"); 
+}
+.ui-nosvg .ui-icon-newsconfig:after {
+	background-image: url("images/cust-icons-png/newsconfig.png");
+}
+.ui-icon-share:after {
+	background-image: url("images/cust-icons-svg/share.svg"); 
+}
+.ui-nosvg .ui-icon-share:after {
+	background-image: url("images/cust-icons-png/share.png");
+}
+.ui-icon-sermons:after {
+	background-image: url("images/cust-icons-svg/sermons.svg"); 
+}
+.ui-nosvg .ui-icon-sermons:after {
+	background-image: url("images/cust-icons-png/sermons.png");
+}
+.ui-icon-qrcode:after {
+	background-image: url("images/cust-icons-svg/qrcode.svg"); 
+}
+.ui-nosvg .ui-icon-qrcode:after {
+	background-image: url("images/cust-icons-png/qrcode.png");
+}
+.ui-icon-findachurch:after {
+	background-image: url("images/cust-icons-svg/findachurch.svg"); 
+}
+.ui-nosvg .ui-icon-findachurch:after {
+	background-image: url("images/cust-icons-png/findachurch.png");
+}
+.ui-icon-question:after {
+	background-image: url("images/cust-icons-svg/question.svg"); 
+}
+.ui-nosvg .ui-icon-question:after {
+	background-image: url("images/cust-icons-png/question.png");
+}
+.ui-icon-missions:after {
+	background-image: url("images/cust-icons-svg/missions.svg"); 
+}
+.ui-nosvg .ui-icon-missions:after {
+	background-image: url("images/cust-icons-png/missions.png");
+}
+.ui-icon-subscribe:after {
+	background-image: url("images/cust-icons-svg/subscribe.svg"); 
+}
+.ui-nosvg .ui-icon-subscribe:after {
+	background-image: url("images/cust-icons-png/subscribe.png");
+}
+
+.ui-icon-permissions:after {
+	background-image: url("images/cust-icons-svg/permissions.svg"); 
+}
+.ui-nosvg .ui-icon-permissions:after {
+	background-image: url("images/cust-icons-png/permissions.png");
+}
+.ui-icon-switchdb:after {
+	background-image: url("images/cust-icons-svg/switchdb.svg"); 
+}
+.ui-nosvg .ui-icon-switchdb:after {
+	background-image: url("images/cust-icons-png/switchdb.png");
+}
+.ui-icon-loginupdate:after {
+	background-image: url("images/cust-icons-svg/loginupdate.svg"); 
+}
+.ui-nosvg .ui-icon-loginupdate:after {
+	background-image: url("images/cust-icons-png/loginupdate.png");
+}
+.ui-icon-signout:after {
+	background-image: url("images/cust-icons-svg/signout.svg"); 
+}
+.ui-nosvg .ui-icon-signout:after {
+	background-image: url("images/cust-icons-png/signout.png");
+}
+.ui-icon-give:after {
+	background-image: url("images/cust-icons-svg/give.svg"); 
+}
+.ui-nosvg .ui-icon-give:after {
+	background-image: url("images/cust-icons-png/give.png");
+}
+

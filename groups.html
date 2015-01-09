@@ -1,0 +1,902 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+
+
+    <script type="text/javascript">
+        window.location.href = "index.html";
+    </script>
+</head>
+<body>
+    <div data-role="page" id="pg_groups" data-theme="b" data-bind="with:pages.groups.view">
+
+
+
+        <!--<div class="pgContent">-->
+
+
+
+        <div data-role="header">
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a  ui-btn-left ui-icon-delete ui-btn-icon-notext grpView grpEdit1 grpEdit2 grpEdit3 grpEdit4 grpEditCancel" style="display:none"></a>
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-left ui-icon-arrow-d ui-btn-icon-notext grpView grpMembers grpMembersBack" style="display:none"></a>
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-left ui-icon-arrow-d ui-btn-icon-notext grpView  grpSearch grpSearchBack" style="display:none"></a>
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-left ui-icon-arrow-l ui-btn-icon-notext grpView  grpSearchResults grpSearchResultsBack" style="display:none"></a>
+
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-left ui-icon-arrow-d ui-btn-icon-notext grpView grpMemDeActivate grpMemDeActivateBack" style="display:none"></a>
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-left ui-icon-arrow-d ui-btn-icon-notext grpView grpSessionEdit grpSessionEditBack" style="display:none"></a>
+
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-left ui-icon-arrow-l ui-btn-icon-notext grpView grpSessions grpSessionsBack" style="display:none"></a>
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-left ui-icon-arrow-d ui-btn-icon-notext grpView grpSessionAtt grpSessionAttBack" style="display:none"></a>
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-left ui-icon-arrow-d ui-btn-icon-notext grpView grpDeActivate grpDeActivateBack" style="display:none"></a>
+
+
+            <!--<a href="#" class="ui-btn ui-btn-a ui-btn-left ui-icon-arrow-l ui-btn-icon-notext grpView grpList btnBackToPrevPage"></a>-->
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-right ui-icon-bars ui-btn-icon-notext grpView grpList grpSessionEdit grpMembers grpSessions grpSessionAtt grpDeActivate grpSearch btnOpenAppMenu"></a>
+
+            <h1 id="grpHeaderText">Groups</h1>
+
+        </div>
+
+        <div role="main" class="ui-content">
+            <div class="pgContent">
+
+                <div class="grpView grpList" style="display:none">
+
+                    <div id="grpsNone" style="display:none">
+                        <div class="ui-bar ui-bar-b" style="text-align:center">
+                            No Groups
+                        </div>
+                        <div class="ui-content ui-body-g">
+                            You have no groups set up in this database.
+                        </div>
+                    </div>
+
+
+                    <div id="grpsActive">
+
+                        <div data-role="collapsibleset" data-content-theme="b" data-iconpos="left" class="grpListCollSet" data-bind="foreach: ko.utils.arrayFilter(groups(), function(itm){ return itm.isActive==true})">
+                            <div data-role="collapsible" data-theme="a" class="ui-mini" data-mini="true" data-collapsed="true">
+                                <h3>
+                                    <span data-bind="html:groupName"></span>
+
+                                </h3>
+                                <div class=" ui-body-a ui-body-g">
+
+
+                                    <table style="font-size:small">
+                                        <tr>
+                                            <td>Category: </td>
+                                            <td data-bind="text:categoryName"></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Day: </td>
+                                            <td data-bind="text:meetingDay"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Meeting Frequency: </td>
+                                            <td data-bind="text:meetingFrequency"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Age: </td>
+                                            <td data-bind="text:ageProfile"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Region: </td>
+                                            <td data-bind="text:region"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Suburb: </td>
+                                            <td data-bind="text:suburb"></td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                                <div>
+                                    <a href="#" class="ui-btn ui-btn-b ui-btn-inline   ui-icon-action ui-btn-icon-left  btnGroupMenu" data-bind="attr:{'data-id':id}">Actions</a>
+                                </div>
+                                <div class="ui-bar-c" style="text-align:center"><small>Status: Active</small></div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div id="grpsInActive">
+
+                        <div data-role="collapsibleset" data-content-theme="b" data-iconpos="left" class="grpListCollSet" data-bind="foreach: ko.utils.arrayFilter(groups(), function(itm){ return itm.isActive==false})">
+                            <div data-role="collapsible" data-theme="g" class="ui-mini" data-mini="true" data-collapsed="true">
+                                <h3>
+                                    <span data-bind="html:groupName"></span>
+
+                                </h3>
+
+                                <table style="font-size:small">
+                                    <tr>
+                                        <td>InActve Reason: </td>
+                                        <td data-bind="text:stsReason"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>More info: </td>
+                                        <td>
+                                            <div style="white-space: normal;font-size: small" data-bind="html:stsMoreInfo"></div>
+                                        </td>
+                                    </tr>
+
+                                </table>
+                                <a href="#" class="ui-btn ui-btn-g ui-btn-inline   ui-icon-power ui-btn-icon-left btnActivateGroup" data-bind="attr:{'data-id':id}">Activate</a>
+
+
+                                <div class="ui-bar-e" style="text-align:center"><small>Status: InActive</small></div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="grpView grpDeActivate" style="display:none">
+                    <div class="ui-content ui-body-g" style="text-align:center">
+                        <span data-bind="html:selectedGroup.groupName" style="text-align:center"></span>
+                    </div>
+
+
+                    <div data-role="fieldcontain">
+                        <div>
+                            <label for="ddlGrpDeActiveReason">
+                                Reason
+                            </label>
+                        </div>
+                        <select id="ddlGrpDeActiveReason" data-bind="options: refData.groupsInActiveReasons, optionsText:'reason',optionsValue:'id'"></select>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <div>
+                            <label for="grpDeActivateMoreInfo">
+                                More Info
+                            </label>
+                        </div>
+                        <input id="grpDeActivateMoreInfo" data-clear-btn="true" placeholder="More info..." type="text" />
+                    </div>
+                    <button class="ui-btn ui-btn-b " id="btnDeActivateGroup">De-Activate</button>
+
+                </div>
+
+                <div class="grpView grpEdit1" style="display:none">
+
+                    <div class="ui-field-contain" id="txtGroupName">
+                        <div>
+                            <label for="txtSmallGroupName">
+                                Group Name
+                            </label>
+                        </div>
+                        <input id="txtSmallGroupName" data-clear-btn="true" data-bind="value: selectedGroup.groupName" name="groupname" placeholder="enter group name" type="text" />
+                    </div>
+
+                    <div class="ui-field-contain">
+                        <div>
+                            <label for="txtSmallGroupDescription">
+                                Describe the group briefly
+                            </label>
+                        </div>
+                        <input id="txtSmallGroupDescription" data-clear-btn="true" data-bind="value: selectedGroup.groupDescription" name="groupdescription" placeholder="brief description..." type="text" />
+                    </div>
+
+                    <div class="ui-field-contain">
+                        <div>
+                            <label for="ddlGrpCatType">
+                                Group type
+                            </label>
+                        </div>
+                        <select id="ddlGrpCatType" name="" data-bind="options: refData.typesAllowed,optionsText: 'name', optionsValue: 'typeId'"></select>
+
+                    </div>
+
+                    <div class="ui-field-contain">
+                        <div>
+                            <label for="ddlRegion">
+                                <span data-bind="html:$root.labels[2000]"></span>
+                            </label>
+                        </div>
+                        <select id="ddlRegion" name="" data-bind="options: refData.regions, value:selectedGroup.regionId, optionsText: 'name', optionsValue: 'id'"></select>
+
+                    </div>
+
+                    <div class="ui-field-contain">
+                        <div>
+                            <label for="ddlAgeProfile">
+                                What is groups age profile?
+                            </label>
+                        </div>
+                        <select id="ddlAgeProfile" name="" data-bind="options: refData.ageProfiles, value:selectedGroup.ageProfileId, optionsText: 'name', optionsValue: 'id'"></select>
+
+                    </div>
+
+                    <div class="ui-field-contain">
+                        <div>
+                            <label for="ddlFrequency">
+                                How often does the group meet?
+                            </label>
+                        </div>
+                        <select id="ddlFrequency" name="" data-bind="options: refData.groupMeetingFrequencies, value:selectedGroup.meetingFrequency"></select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="grpView grpEdit2" style="display:none">
+
+                    <div class="ui-field-contain">
+                        <div>
+                            <label for="ddlMeetingDay">
+                                What day does group meet on?
+                            </label>
+                        </div>
+                        <select id="ddlMeetingDay" name="" data-bind="value:selectedGroup.meetingDay">
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                            <option value="Sunday">Sunday</option>
+                            <option value="Unknown">Unknown</option>
+                        </select>
+
+                    </div>
+
+                    <div class="ui-field-contain">
+                        <div>
+                            <label for="ddlGender">
+                                What is groups gender?
+                            </label>
+                        </div>
+                        <select id="ddlGender" name="" data-bind="value:selectedGroup.gender">
+                            <option value="M/F">Male/Female</option>
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
+                        </select>
+
+                    </div>
+
+                    <div class="ui-field-contain">
+                        <div>
+                            <label for="txtMeetingTime">
+                                What time does group meet?
+                            </label>
+                        </div>
+                        <input id="txtMeetingTime" data-clear-btn="true" data-bind="value: selectedGroup.meetingTime" placeholder="meeting time" type="time" />
+                    </div>
+
+                    <div class="ui-field-contain">
+                        <label>
+                            <input type="checkbox" data-bind="checked:selectedGroup.isPrivate" />
+                            This group is private
+                        </label>
+                        <div><small>(If checked this group will be not show up in search results)</small></div>
+                    </div>
+
+                    <div class="ui-field-contain">
+                        <label>
+                            <input type="checkbox" data-bind="checked:selectedGroup.openMembership" />
+
+                            This groups membership is open
+                        </label>
+                        <div><small>(If checked then people will be able to add themselves as members to this group.)</small></div>
+
+                    </div>
+
+
+                </div>
+
+                <div class="grpView grpEdit3" style="display:none">
+
+
+                    <div id="grpEditShowStreetInfo">
+                        <div class="ui-field-contain">
+                            <div><label for="txtGrpsEditStreetNumber">Street Number (OPTIONAL):</label></div>
+                            <input id="txtGrpsEditStreetNumber" data-clear-btn="true" data-bind="value: selectedGroup.streetNumber" type="text" />
+
+                        </div>
+
+                        <div class="ui-field-contain">
+                            <div> <label for="txtGrpsEditStreetName">Street Name (OPTIONAL):</label></div>
+                            <input id="txtGrpsEditStreetName" data-clear-btn="true" data-bind="value: selectedGroup.streetName" type="text" />
+
+                        </div>
+                    </div>
+
+                    <div id="grpEditHideStreetInfo" class="ui-content ui-bar-g" style="font-size:small">
+                        As a church we have chosen, for security reasons, not to allow street info to be stored for groups. Use the 'Other Info'
+                        option below provide more info about the group location if you like.
+
+                    </div>
+
+
+                    <div id="grpEditSuburb" style="display:none">
+                        <div data-role="fieldcontain">
+                            <div><label for="txtGrpsEditSuburb">Group Suburb</label></div>
+                            <input id="txtGrpsEditSuburb" data-bind="value: selectedGroup.suburb" type="text" />
+
+                        </div>
+                        <small>(The Google map was not able to determine the suburb where this group meets. Please manually enter it here)</small>
+                    </div>
+
+
+
+                    <div class="ui-field-contain">
+                        <div><label for="txtGrpsEditOtherInfo">Other Info:</label></div>
+                        <input id="txtGrpsEditOtherInfo" data-clear-btn="true" data-bind="value: selectedGroup.otherInfo" type="text" />
+                        <small>(Enter any extra info about the meeting location of this group. E.g. Room number)</small>
+
+                    </div>
+
+
+                </div>
+
+                <div class="grpView grpEdit4" style="display:none">
+
+
+                    <table border="1" width="100%" style="font-size:small">
+                        <tr>
+                            <td>Group Name:</td>
+                            <td>
+                                <div data-bind="html:selectedGroup.groupName"></div>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Gender:</td>
+                            <td>
+                                <div data-bind="html:selectedGroup.gender"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Category:</td>
+                            <td>
+                                <div data-bind="html:selectedGroup.categoryName() + '(' + selectedGroup.categoryId() + ')'"></div>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Group Type:</td>
+                            <td>
+                                <div data-bind="html:selectedGroup.groupType() + '(' + selectedGroup.groupTypeId() + ')'"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Suburb:</td>
+                            <td>
+                                <div data-bind="html:selectedGroup.suburb"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Meeting Time:</td>
+                            <td>
+                                <div data-bind="html:selectedGroup.meetingTime"></div>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Meeting Day:</td>
+                            <td>
+                                <div data-bind="html:selectedGroup.meetingDay"></div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Latitude:</td>
+                            <td>
+                                <div data-bind="html:selectedGroup.geoLat"></div>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Longitude:</td>
+                            <td>
+                                <div data-bind="html:selectedGroup.geoLng"></div>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Open Membership:</td>
+                            <td>
+                                <div data-bind="html:selectedGroup.openMembership"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Active:</td>
+                            <td>
+                                <div data-bind="html:selectedGroup.isActive"></div>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>De-Active Reason:</td>
+                            <td>
+                                <div data-bind="html:'Reason: ' + selectedGroup.stsReason() + '(id:' + selectedGroup.stsReasonId() + ')'"></div>
+                            </td>
+                        </tr>
+
+                    </table>
+
+                </div>
+
+                <div class="grpView grpMemDeActivate" style="display:none">
+
+                    <div class="ui-bar ui-bar-b">
+                        <div style="text-align:center">De-Activate Member</div>
+                    </div>
+                    <div class="ui-content ui-body-g">Please provide a reason why you are removing this person from the group</div>
+                    <div class="ui-field-contain">
+                        <label for="ddlGrpMemDeActiveReason">
+                            Reason
+                        </label>
+                        <select id="ddlGrpMemDeActiveReason" data-bind="options: refData.groupMembersInActiveReasons, optionsText:'reason',optionsValue:'id'"></select>
+                    </div>
+                    <div class="ui-field-contain">
+                        <label for="grpMemDeActivateMoreInfo">
+                            More Info
+                        </label>
+                        <input id="grpMemDeActivateMoreInfo" data-clear-btn="true" placeholder="More info" type="text" />
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a"><button class="ui-btn ui-btn-b" id="btnGrpDeActivateMemGo">De-Activate</button></div>
+                        <div class="ui-block-b"><button class="ui-btn ui-btn-b grpMemDeActivateBack">Cancel</button></div>
+                    </div>
+
+
+                    <button class="ui-btn ui-btn-e" id="btnDeleteMemberForever">Delete Member</button>
+
+                    <div data-role="popup" id="memberDeletePopup" style="max-width: 400px;"
+                         class="ui-corner-all">
+                        <div data-role="header" data-theme="e" class="ui-corner-top">
+                            <h1>Delete?</h1>
+
+                        </div>
+                        <div class="ui-corner-bottom ui-content ui-body-a">
+                            <div class="ui-title" style="text-align: center; font-size: larger" data-bind="html:selectedGroupMember.displayName"></div>
+
+                            <p>
+                                Are you sure you want to delete this member from the group? All data relating to this member will be lost forever?
+                            </p>
+                            <a href="#" class="ui-btn ui-btn-e ui-btn-inline" data-inline="true" id="btnMemberConfirmDelete">Delete</a>
+                            <a href="#" class="ui-btn ui-btn-b ui-btn-inline" data-rel="back" data-inline="true">Cancel</a>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="grpView grpMembers" style="display:none">
+                    <div class="ui-content ui-body-g" style="text-align:center">
+                        <span data-bind="html:selectedGroup.groupName" style="text-align:center"></span>
+                    </div>
+                    <div id="grpMemActive">
+                        <div data-bind="foreach: ko.utils.arrayFilter(selectedGroup.members(), function(itm){ return itm.isActive})">
+                            <div class="ui-bar ui-bar-b" style="text-align:center">
+                                <h3>
+                                    <span>
+                                        <a href="#" class=" ui-btn-right ui-icon-delete ui-btn-icon-notext memberDelete" data-bind="attr:{'data-id':id}"></a>
+                                    </span>
+                                    <span data-bind="html:displayName"></span>
+                                </h3>
+                            </div>
+                            <div class=" ui-body-a ui-body-g">
+                                <div class="ui-bar-c memberDelete" data-bind="attr:{'data-id':id}" style="text-align:center; white-space:normal"><small>Status: Active (click to make inactive)</small></div>
+                                <table>
+                                    <tr>
+                                        <td>Email: </td>
+                                        <td data-bind="text:email"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mobile: </td>
+                                        <td data-bind="text:mobileNumber"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Birthday: </td>
+                                        <td data-bind="text:birthday"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="grpMemInActive">
+                        <div data-bind="foreach: ko.utils.arrayFilter(selectedGroup.members(), function(itm){ return !itm.isActive})">
+                            <div class="ui-bar ui-bar-f" style="text-align:center">
+                                <h3>
+                                    <span>
+                                        <a href="#" class=" ui-btn-right ui-icon-check ui-btn-icon-notext memberActivate" data-bind="attr:{'data-id':id}"></a>
+                                    </span>
+                                    <span data-bind="html:displayName"></span>
+                                </h3>
+
+                            </div>
+                            <div class=" ui-body-a ui-body-g">
+                                <div class="ui-bar-e memberActivate" data-bind="attr:{'data-id':id}" style="text-align:center; white-space:normal"><small>Status: InActive (click to make active)</small></div>
+                                <table>
+                                    <tr>
+                                        <td>Email: </td>
+                                        <td data-bind="text:email"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mobile: </td>
+                                        <td data-bind="text:mobileNumber"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>InActive Reason: </td>
+                                        <td data-bind="text:inActiveReason"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+                <div class="grpView grpSessions" style="display:none">
+                    <div class="ui-content ui-body-g" style="text-align:center">
+                        <span data-bind="html:selectedGroup.groupName" style="text-align:center"></span>
+                    </div>
+
+                    <div data-bind="foreach:selectedGroup.sessions">
+                        <div class="ui-bar ui-bar-b" style="text-align:center">
+                            <h3 style="text-align:center">
+                                <span>
+                                    <a href="#" class=" ui-btn-left ui-icon-group ui-btn-icon-notext btnGrpSessionRegister" data-bind="attr:{'data-id':id}"></a>
+                                </span>
+                                <span data-bind="html:sessionDateDisplay"></span>
+                                <span>
+                                    <a href="#" class=" ui-btn-right ui-icon-edit ui-btn-icon-notext btnGrpSessionEdit" data-bind="attr:{'data-id':id}"></a>
+                                </span>
+                            </h3>
+                        </div>
+                        <div class=" ui-body-a ui-body-g">
+                            <div data-bind="html:name" style="text-align:center"></div>
+                            <div><small data-bind="html:moreInfo"></small></div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="grpView grpSessionEdit" style="display: none">
+                    <div class="ui-field-contain">
+                        <div>
+                            <label for="grpSessionName">
+                                Session Name
+                            </label>
+                        </div>
+
+                        <input id="grpSessionName" data-clear-btn="true" data-bind="value:selectedGroupSession.name" placeholder="Session Name" type="text" />
+                    </div>
+
+
+                    <div class="ui-field-contain">
+                        <div> <label for="grpSessionDate">Date:</label></div>
+                        <input type="text" id="grpSessionDate" readonly data-bind="value:selectedGroupSession.sessionDateDisplay" />
+                    </div>
+
+                    <div class="ui-field-contain">
+                        <div>
+                            <label for="grpSessionMoreInfo">
+                                More Info
+                            </label>
+                        </div>
+                        <textarea style="height: 100px; width: 100%" data-bind="value:selectedGroupSession.moreInfo" id="grpSessionMoreInfo"></textarea>
+                    </div>
+
+                    <button class="ui-btn ui-btn-b " id="btnUpdateGrpSession">Update</button>
+                    <button class="ui-btn ui-btn-e  " id="btnGrpDeleteSession">Delete</button>
+                </div>
+
+
+                <div class="grpView grpSessionAtt" style="display:none">
+
+                    <h4 style="text-align:center">
+                        <span data-bind="html:selectedGroupSession.sessionDateDisplay" style="text-align:center"></span>
+                    </h4>
+
+                    <script id="grpSessionAttendance-template" type="text/html">
+                        <li>
+                            <table width="100%" style="font-size:small">
+
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div style="white-space: normal" data-bind="text: name"></div>
+                                        </td>
+
+                                        <td align="right"><input type="checkbox" data-role="flipswitch" data-theme="a" data-off-text="X" data-on-text="✓" data-bind="checked:attended,attr:{'data-id':id}" class="ui-mini grpSessionAttFlipSwtch"></td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                    </script>
+                    <ul data-role="listview" data-theme="b" data-inset="true" class="grpAttendanceList ui-mini" id="grpMembersAttendance" data-bind="template: { name: 'grpSessionAttendance-template', foreach: selectedGroupSession.attendance}"></ul>
+
+
+                </div>
+
+
+                <div class="grpView grpSearch" style="display:none">
+
+
+                    <div>
+                        <label for="ddlGrpSearchCatType">
+                            Group type
+                        </label>
+                    </div>
+                    <select id="ddlGrpSearchCatType" name="" data-bind="options: refData.typesAllowed,  optionsText: 'name', optionsValue: 'typeId'"></select>
+
+
+
+
+                    <div>
+                        <label for="ddlGrpSearchAgeProfile">
+                            Groups age profile
+                        </label>
+                    </div>
+                    <select id="ddlGrpSearchAgeProfile" name="" data-bind="options: refData.ageProfiles, value:grpQry.ageProfileId, optionsText: 'name', optionsValue: 'id',optionsCaption: 'select option...'"></select>
+
+
+
+
+                    <div>
+                        <label for="ddlGrpSearchMeetingDay">
+                            Meeting day
+                        </label>
+                    </div>
+
+
+                    <select id="ddlGrpSearchMeetingDay" name="" data-bind="value:grpQry.meetingDay">
+                        <option value="">select option...</option>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                        <option value="Saturday">Saturday</option>
+                        <option value="Sunday">Sunday</option>
+                        <option value="Unknown">Unknown</option>
+                    </select>
+
+
+
+
+
+                    <div>
+                        <label for="ddlGrpSearchGender">
+                            Group gender
+                        </label>
+                    </div>
+                    <select id="ddlGrpSearchGender" name="" data-bind="value:grpQry.gender">
+                        <option value="">select option...</option>
+                        <option value="M/F">Does not matter</option>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                    </select>
+
+
+
+
+
+                    <div>
+                        <label for="ddlGrpSearchRegion">
+                            <span data-bind="html:$root.labels[2000]"></span>
+                        </label>
+                    </div>
+
+                    <select id="ddlGrpSearchRegion" name="" data-bind="options: refData.regions,  value:grpQry.regionId, optionsText: 'name', optionsValue: 'id',optionsCaption: 'select option...'"></select>
+
+
+
+
+
+
+                    <button class="ui-btn ui-btn-a ui-btn-inline " id="btnGrpSearchExecute">Search</button>
+                    <button class="ui-btn ui-btn-b ui-btn-inline " id="btnGrpSearchReset">Reset</button>
+
+                </div>
+
+                <div class="grpView grpSearchResults" style="display:none">
+
+                    <div data-role="collapsibleset" data-content-theme="b" data-iconpos="left" class="grpSearchCollSet" data-bind="foreach: searchedGroups">
+                        <div data-role="collapsible" data-theme="a" class="ui-mini" data-mini="true" data-collapsed="true">
+                            <h3>
+                                <span data-bind="html:groupName"></span>
+
+                            </h3>
+                            <div class=" ui-body-a ui-body-g">
+
+
+                                <table style="font-size:small">
+                                    <tr>
+                                        <td>Leader: </td>
+                                        <td data-bind="text:leaderName"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tel: </td>
+                                        <td data-bind="text:leaderMobileNumber"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email: </td>
+                                        <td data-bind="text:leaderEmail"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Type: </td>
+                                        <td data-bind="text:groupType"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Day: </td>
+                                        <td data-bind="text:meetingDay"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Meeting Frequency: </td>
+                                        <td data-bind="text:meetingFrequency"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Age: </td>
+                                        <td data-bind="text:ageProfile"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Region: </td>
+                                        <td data-bind="text:regionName"></td>
+                                    </tr>
+
+                                </table>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div data-role="popup" id="popupGrpMenu" data-theme="a">
+                    <ul data-role="listview" class="ui-mini" data-inset="true" style="min-width:210px;">
+
+                        <li><a href="#" id="btnGrpMemSendSMS">SMS Members</a></li>
+
+                        <li><a href="#" id="btnGrpViewMembers">View Members</a></li>
+                        <li><a href="#" id="btnGrpAttendance">Attendance Register</a></li>
+                        <li><a href="#" id="btnGrpEdit">Edit</a></li>
+                        <li><a href="#" id="btnGrpDeActivateMi">De-Activate </a></li>
+                        <li><a href="#" id="btnDeleteGroup">Delete Group</a></li>
+                    </ul>
+                </div>
+
+
+                <div data-role="popup" id="popupGrpMore" data-theme="a">
+                    <ul data-role="listview" class="ui-mini" data-inset="true" style="min-width:210px;">
+                        <li><a href="#" id="btnRefreshGroups2">Refresh Groups</a></li>
+                        <li><a href="#" id="btnRefreshGrpRefData">Refresh Core</a></li>
+                    </ul>
+                </div>
+
+
+                <div data-role="popup" id="grpDeletePopup" style="max-width: 400px;"
+                     class="ui-corner-all">
+                    <div data-role="header" data-theme="e" class="ui-corner-top">
+                        <h1>Delete?</h1>
+                    </div>
+                    <div class="ui-corner-bottom ui-content ui-body-a">
+                        <div class="ui-title" style="text-align: center; font-size: larger" data-bind="html:selectedGroup.groupName"></div>
+                        <div style="text-align: center; font-size:small" data-bind="html:'id: ' + selectedGroup.id()"></div>
+                        <p>
+                            Are you sure you want to delete this group? All data relating to it will be lost?
+                        </p>
+                        <a href="#" class="ui-btn ui-btn-e ui-btn-inline " id="btnGrpDeleteYes">Delete</a>
+                        <a href="#" class="ui-btn ui-btn-b ui-btn-inline " data-rel="back">Cancel</a>
+
+                    </div>
+                </div>
+            </div>
+            </div>
+
+        <div data-role="footer" data-theme="g" data-tap-toggle="false" style="overflow:hidden;" data-position="fixed">
+
+            <div data-role="navbar" class="grpView grpSessions" style="display:none">
+                <ul>
+
+                    <li><div class="ui-btn ui-btn-c ui-btn-icon-top ui-icon-plus" id="btnAddGroupSession"><small>Add New Session</small></div></li>
+                </ul>
+            </div>
+
+            <div data-role="navbar" class="grpView grpSearchResults" style="display:none">
+                <ul>
+
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-refresh grpSearchResultsBack "><small>Search Again</small></div></li>
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-navigation " id="btnGrpSearchMapView"><small>Map View</small></div></li>
+
+                </ul>
+            </div>
+
+            <div data-role="navbar" class="grpView grpList">
+                <ul>
+                    <!--<li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-user btnGoProfile"><small>Profile</small></div></li>
+
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-news btnGoNews " ><small>News</small></div></li>-->
+                    <!--<li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-bars " id="btnShowGrpMore"><small>More</small></div></li>-->
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-search " id="btnGrpSearch"><small>Search Groups</small></div></li>
+
+                    <li><div class="ui-btn ui-btn-c ui-btn-icon-top ui-icon-plus btnAddNewGroup "><small>Add Group</small></div></li>
+                </ul>
+            </div>
+
+            <div data-role="navbar" class="grpView grpSessionAtt" style="display:none">
+                <ul>
+                    <!--<li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-user btnGoProfile"><small>Profile</small></div></li>
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-news btnGoNews "><small>News</small></div></li>-->
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-gear " id="btnManageMembers"><small>Manage Members</small></div></li>
+                    <li><div class="ui-btn ui-btn-c ui-btn-icon-top ui-icon-plus btnAddNewMemberFromSession"><small>Add Member</small></div></li>
+                </ul>
+            </div>
+
+            <div data-role="navbar" class="grpView grpMembers" style="display:none">
+                <ul>
+                    <!--<li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-user btnGoProfile"><small>Profile</small></div></li>
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-mail btnGoMessage"><small>Messages</small></div></li>
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-news btnGoNews "><small>News</small></div></li>-->
+                    <li><div class="ui-btn ui-btn-c ui-btn-icon-top ui-icon-plus btnAddNewMember"><small>Add Member</small></div></li>
+                </ul>
+            </div>
+
+            <div data-role="navbar" class="grpView grpEdit1" style="display:none">
+                <ul>
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-arrow-l  grpEdit1Back"><small>Back</small></div></li>
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-arrow-r  grpEdit1Next"><small>Next</small></div></li>
+                </ul>
+            </div>
+
+            <div data-role="navbar" class="grpView grpEdit2" style="display:none">
+                <ul>
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-arrow-l  grpEdit2Back"><small>Back</small></div></li>
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-arrow-rr  grpEdit2GoTo4"><small>Skip Location</small></div></li>
+
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-arrow-r  grpEdit2Next"><small>Edit Location</small></div></li>
+                </ul>
+            </div>
+
+            <div data-role="navbar" class="grpView grpEdit3" style="display:none">
+                <ul>
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-arrow-l  grpEdit3Back"><small>Back</small></div></li>
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-arrow-r  grpEdit3Next"><small>Next</small></div></li>
+                </ul>
+            </div>
+
+            <div data-role="navbar" class="grpView grpEdit4" style="display:none">
+                <ul>
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-arrow-l  grpEdit4Back"><small>Back</small></div></li>
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-save  " id="grpEdit4Save"><small>Save</small></div></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--</div>-->
+</body>
+</html>

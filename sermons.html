@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Sermons</title>
+    <script type="text/javascript">
+        window.location.href = "index.html";
+    </script>
+</head>
+<body>
+    <div data-role="page" id="pg_sermons" data-theme="b">
+
+
+
+        <!--<div class="pgContent">-->
+
+
+
+        <div data-role="header">
+            <!--<a href="#" class="ui-btn ui-btn-a ui-btn-left ui-icon-arrow-d ui-btn-icon-notext sermonView   btnSermonViewBack" style="display:none"></a>-->
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-left ui-icon-arrow-l ui-btn-icon-notext sermonView itemsView  btnSermonViewBack" style="display:none"></a>
+
+
+            <!--<a href="#" class="ui-btn ui-btn-a ui-btn-left ui-icon-arrow-l ui-btn-icon-notext sermonView feedsView  btnBackToPrevPage"></a>-->
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-right ui-icon-bars ui-btn-icon-notext  btnOpenAppMenu"></a>
+
+
+            <h1 class="podcastHeader">Sermons</h1>
+
+        </div>
+
+        <div role="main" class="ui-content" data-bind="with:pages.sermons.view">
+            <div class="pgContent">
+                <div class="sermonView noFeedsView" style="display:none">
+                    <div class="ui-bar ui-bar-a">
+                        <div style="text-align:center">No Sermons</div>
+                    </div>
+                    <div class="ui-content ui-body-g" style="text-align: center; font-size:small">
+                        <div>This church does not have any sermon feeds loaded.</div>
+                    </div>
+                </div>
+
+                <div class="sermonView feedsView">
+
+                    <div data-bind=" foreach: feeds">
+
+                        <div class="ui-bar ui-bar-b" style="text-align:center">
+                            <h3>
+                                <a href="#" class=" ui-btn-left ui-icon-carat-d ui-btn-icon-notext feedsItemMenu" data-bind="attr:{'data-id':id}"></a>
+                                <span style="text-align: center" data-bind="html: title"></span>
+                                <span class="ui-li-count" data-bind="text: items.length"></span>
+
+                            </h3>
+                        </div>
+                        <div class="viewSermons" data-bind="attr:{'data-id':id}">
+                            <table width="100%">
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="ui-bar ui-bar-c" data-bind="visible:isSubscribed" style="font-size:x-small">
+                                            You are subscribed to this channel
+                                        </div>
+                                        <div class="ui-bar ui-bar-d" data-bind="visible:!isSubscribed" style="font-size:x-small">
+                                            You are not subscribed to this channel
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" align="left" width="110px">
+                                        <div style="text-align:center; margin-bottom:5px">
+                                            <img width="110" height="110" data-bind="attr: {src: imageUrl}" />
+                                        </div>
+                                    </td>
+                                    <td height="100px" valign="top">
+                                        <div class="ui-content ui-body-g" style="font-size: small; height:80px; max-height:80px; overflow: hidden; text-overflow:clip; " data-bind="html: description">
+
+                                        </div>
+
+
+
+
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div style="font-size: x-small; font-style:italic" data-bind="html:'Hosted by: ' + portalOwnerName + ', Updated:' + lastUpdatedTime">
+
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+
+                        <div style="text-align:right">
+                            <!--<div class="ui-btn ui-btn-d ui-mini ui-btn-inline substoggle" data-bind="visible:isSubscribed(), attr: {'data-id': id}">Unsubscribe</div>
+                    <div class="ui-btn ui-btn-c ui-mini ui-btn-inline substoggle" data-bind="visible:!isSubscribed(), attr: {'data-id': id}">Subscribe</div>
+
+                    <div class="ui-btn ui-btn-b ui-mini ui-btn-inline viewfeeditems" data-bind="attr: {'data-id': id}">View</div>-->
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+
+                </div>
+
+                <div class="sermonView itemsView" style="display:none">
+
+                    <h4 style="text-align:center">Channel: <span data-bind="html:selectedFeed.title"></span></h4>
+                    <div data-bind=" foreach: selectedFeed.items">
+                        <div class="ui-bar ui-bar-b" style="text-align: center">
+                            <h3>
+                                <a href="#" class=" ui-btn-left ui-icon-audio ui-btn-icon-notext listenNow" data-bind="attr:{'data-id':id}"></a>
+
+                                <a href="#" class=" ui-btn-right ui-icon-carat-d ui-btn-icon-notext sermonMenu" data-bind="attr:{'data-id':id}"></a>
+                                <span data-bind="html: publishDate"></span>
+
+                            </h3>
+                        </div>
+                        <div data-bind="attr:{'data-id':id}">
+                            <table width="100%">
+                                <tr>
+                                    <td valign="top" align="left" width="70px">
+                                        <div style="text-align:center; margin-bottom:5px">
+                                            <img width="70" height="70" data-bind="attr: {src: $root.pages.sermons.view.selectedFeed.imageUrl()}" />
+                                        </div>
+                                    </td>
+                                    <td height="70px">
+
+                                        <div style="position:relative; height:100%" class="ui-content ui-body-g">
+                                            <div style="font-size: small; height: 35px; overflow: hidden; text-overflow: ellipsis; " data-bind="html: title">
+
+
+                                            </div>
+                                            <div style="position:absolute; bottom:10px; width:100%">
+
+
+                                                <div style="font-size: x-small; font-style:italic" data-bind="html:'Published: ' + publishDate">
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div data-role="popup" id="popupSermonMenu" data-theme="a">
+                    <ul data-role="listview" class="ui-mini" data-inset="true" style="min-width:210px;">
+
+                        <li><a href="#" id="btnSermonsView">View Sermons</a></li>
+
+                        <li><a href="#" id="btnSermonsToggleSubs">Subscribe</a></li>
+
+                    </ul>
+                </div>
+
+
+
+
+                <div data-role="popup" id="popupSermonItemMenu" data-theme="a">
+                    <ul data-role="listview" class="ui-mini" data-inset="true" style="min-width: 210px;">
+
+                        <!--<li><a href="#" id="btnFeedItemDownload">Download</a></li>-->
+                        <li><a href="#" id="btnFeedItemEmail">Email Me Link</a></li>
+                        <li><a href="#" id="btnFeedItemFinished">Mark as Read</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            </div>
+
+        <div data-role="footer" data-theme="g" data-tap-toggle="false" style="overflow:hidden;" data-position="fixed">
+
+
+            <div data-role="navbar" class="">
+                <ul>
+                    <!--<li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-user btnGoProfile"><small>Profile</small></div></li>
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-news btnGoNews"><small>News</small></div></li>
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-mail btnGoMessages"><small>Messages</small></div></li>-->
+
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-refresh btnReloadSermons "><small>Refresh Sermon Feeds</small></div></li>
+
+                </ul>
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+</body>
+</html>

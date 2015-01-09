@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Lists</title>
+    <script type="text/javascript">
+        window.location.href = "index.html";
+    </script>
+</head>
+<body>
+    <div data-role="page" id="pg_lists" data-theme="b" data-bind="with:pages.lists.view">
+
+
+
+        <!--<div class="pgContent">-->
+
+
+
+        <div data-role="header">
+            <!--<a href="#" class="ui-btn ui-btn-a ui-btn-left ui-icon-arrow-l ui-btn-icon-notext   btnBackToPrevPage"></a>-->
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-right ui-icon-bars ui-btn-icon-notext btnOpenAppMenu"></a>
+
+            <h1>Lists</h1>
+
+        </div>
+
+        <div role="main" class="ui-content">
+            <div class="pgContent">
+
+                <div class="listView listContent" style="display:none">
+                    <script id="boolfields-template" type="text/html">
+                        <li>
+                            <div class="ui-bar ui-bar-b">
+                                <div style="text-align: center" data-bind="html: name"></div>
+
+                            </div>
+
+                            <table width="100%">
+
+                                <tbody data-bind="foreach: mappings">
+                                    <tr>
+                                        <td data-bind="text: name"></td>
+
+                                        <td align="right"><input type="checkbox" data-theme="b" data-role="flipswitch" data-off-text="X" data-on-text="✓" data-bind="checked:value,attr:{'data-id':id}" class="ui-mini fieldFlipSwitch"></td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                    </script>
+                    <ul data-role="listview" data-inset="true" data-bind="template: { name: 'boolfields-template', foreach: fields}"></ul>
+                </div>
+
+                <div class="listView noListContent" style="display:none">
+                    <div class="ui-bar ui-bar-a">
+                        <div style="text-align:center">No Data</div>
+                    </div>
+                    <div class="ui-content ui-body-g" style="font-size:small">
+                        <p>We do not have any list data for your profile in this database.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <!--</div>-->
+</body>
+</html>
