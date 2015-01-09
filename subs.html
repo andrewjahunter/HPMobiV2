@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Subs</title>
+    <script type="text/javascript">
+        window.location.href = "index.html";
+    </script>
+</head>
+<body>
+
+
+
+    <div data-role="page" id="pg_subs" data-theme="b" data-bind="with:pages.subs.view">
+        <style type="text/css">
+            .subs-custom-size-flipswitch.ui-flipswitch .ui-btn.ui-flipswitch-on {
+                text-indent: -5.9em;
+            }
+
+            .subs-custom-size-flipswitch.ui-flipswitch .ui-flipswitch-off {
+                text-indent: 0.5em;
+            }
+
+            .subs-custom-size-flipswitch.ui-flipswitch {
+                width: 8.875em;
+            }
+
+                .subs-custom-size-flipswitch.ui-flipswitch.ui-flipswitch-active {
+                    padding-left: 7em;
+                    width: 1.875em;
+                }
+
+            @media (min-width: 28em) {
+                    
+                /*Repeated from rule .ui-flipswitch above*/
+                     .ui-field-contain > label + .subs-custom-size-flipswitch.ui-flipswitch {
+                    width: 1.875em;
+                }
+            }
+        </style>
+        <div data-role="header">
+            <!--<a href="#" class="ui-btn ui-btn-a ui-btn-left ui-icon-arrow-l ui-btn-icon-notext btnBackToPrevPage"></a>-->
+
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-right ui-icon-bars ui-btn-icon-notext btnOpenAppMenu"></a>
+
+            <h3>Subscriptions</h3>
+        </div><!-- /header -->
+
+        <div role="main" class="ui-content">
+            <div class="pgContent">
+
+                <div id="noSubsItems" style="display:none">
+
+                    <div class="ui-bar ui-bar-b">
+                        <div style="text-align:center">No Subscriptions</div>
+                    </div>
+                    <div class="ui-content ui-body-g" style="font-size:small">
+                        There are no live subscriptions connected to this application.
+                        <p>To refresh the information in this display click the 'refresh' button at the bottom of the screen.</p><p>
+                            If
+                            there is still no subscriptions available then this is an error. Please notify your church office and have them correct this.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="subsItems" style="display:none; font-size:small">
+
+                    <div class="ui-bar ui-bar-f" style="text-align:center">
+                        <small>Click the 'X' to unsubscribe from the churches below.</small>
+                    </div>
+                    <div data-bind="foreach: ko.utils.arrayFilter(subs(), function(itm){ return itm.subscribed})">
+                        <div class="ui-bar ui-bar-b" style="text-align: center">
+                            <h3>
+                                <a href="#" class=" ui-btn-right ui-icon-delete ui-btn-c ui-btn-icon-notext btnUnSubscribeFromPortal" data-bind="attr:{'data-id':portalId,'data-name':portalName}"></a>
+                                <small data-bind="html: portalName"></small>
+                            </h3>
+                        </div>
+                        <div style="text-align:center">
+
+                            <fieldset>
+                                <div data-role="fieldcontain">
+                                    <input type="checkbox" data-wrapper-class="subs-custom-size-flipswitch" data-off-text="Email Off" data-on-text="Email On" data-role="flipswitch" class="portalSubsFlipSwtch" data-bind="checked:sendEmail,attr:{'data-id':portalId,'data-name':portalName}">
+                                </div>
+                            </fieldset>
+                            <div data-bind="visible:sendEmail"><small><i>You will receive news to this app and via email.</i></small></div>
+                            <div data-bind="visible:!sendEmail"><small><i>You will receive news only to this app.</i></small></div>
+
+                        </div>
+                    </div>
+
+                    <div class="ui-bar ui-bar-f" style="text-align:center">
+                        <small>Click the '✓' to subscribe to any of the churches below</small>
+                    </div>
+                    <div data-bind="foreach: ko.utils.arrayFilter(subs(), function(itm){ return !itm.subscribed})">
+                        <div class="ui-bar ui-bar-g" style="text-align: center">
+                            <h3>
+                                <a href="#" class=" ui-btn-right ui-icon-check ui-btn-b ui-btn-icon-notext btnSubscribeToPortal" data-bind="attr:{'data-id':portalId,'data-name':portalName}"></a>
+                                <small data-bind="html: portalName"></small>
+                            </h3>
+                        </div>
+
+                    </div>
+
+
+
+
+                </div>
+
+                <div data-role="popup" id="popupAddMyChurchNews" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width: 400px;">
+                    <div data-role="header" data-theme="b">
+                        <h3>Add Content</h3>
+                    </div>
+                    <div role="main" class="ui-content ui-body-b">
+                        <p>If you are a part of this church family simply create a news channel in your Godochurch database and the content will be delivered to this application.</p>
+                        <p>If you do not have an active database please visit start.godochurch.com.</p>
+                        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a" data-rel="back">Ok</a>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <div data-role="footer" data-theme="g" data-tap-toggle="false" style="overflow:hidden;" data-position="fixed">
+
+
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#" class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-refresh " id="btnSubsRefresh"><small>Refresh</small></a></li>
+
+                    <li><a href="#" class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-question" id="btnWhereIsMyChurch"><small>Where is my church</small></a></li>
+
+
+                </ul>
+            </div>
+
+
+        </div>
+
+    </div>
+</body>
+</html>
+
+
+
