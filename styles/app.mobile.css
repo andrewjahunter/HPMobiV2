@@ -225,7 +225,7 @@ html .ui-bar-a .ui-bar-inherit,
 html .ui-body-a .ui-bar-inherit,
 html body .ui-group-theme-a .ui-bar-inherit {
 	background-color: #B52F3C /*{a-bar-background-color}*/;
-	border-color: #B52F3C /*{a-bar-border}*/;
+	border-color: #631921 /*{a-bar-border}*/;
 	color: #ffffff /*{a-bar-color}*/;
 	text-shadow: 0 /*{a-bar-shadow-x}*/ 0 /*{a-bar-shadow-y}*/ 0 /*{a-bar-shadow-radius}*/ #000000 /*{a-bar-shadow-color}*/;
 	font-weight: bold;
@@ -387,7 +387,7 @@ html .ui-bar-b .ui-bar-inherit,
 html .ui-body-b .ui-bar-inherit,
 html body .ui-group-theme-b .ui-bar-inherit {
 	background-color: #B52F3C /*{b-bar-background-color}*/;
-	border-color: #B52F3C /*{b-bar-border}*/;
+	border-color: #631921 /*{b-bar-border}*/;
 	color: #ffffff /*{b-bar-color}*/;
 	text-shadow: 0 /*{b-bar-shadow-x}*/ 0 /*{b-bar-shadow-y}*/ 0 /*{b-bar-shadow-radius}*/ #000000 /*{b-bar-shadow-color}*/;
 	font-weight: bold;
@@ -510,10 +510,10 @@ html .ui-bar-b .ui-slider-track .ui-btn-active,
 html .ui-body-b .ui-slider-track .ui-btn-active,
 html body .ui-group-theme-b .ui-slider-track .ui-btn-active,
 html body div.ui-slider-track.ui-body-b .ui-btn-active {
-	background-color: #ffffff /*{b-active-background-color}*/;
+	background-color: #B52F3C /*{b-active-background-color}*/;
 	border-color: #000000 /*{b-active-border}*/;
-	color: #fff5f5 /*{b-active-color}*/;
-	text-shadow: 0 /*{b-active-shadow-x}*/ 1px /*{b-active-shadow-y}*/ 0 /*{b-active-shadow-radius}*/ #005599 /*{b-active-shadow-color}*/;
+	color: #ffffff /*{b-active-color}*/;
+	text-shadow: 0 /*{b-active-shadow-x}*/ 0px /*{b-active-shadow-y}*/ 0 /*{b-active-shadow-radius}*/ #f5faff /*{b-active-shadow-color}*/;
 }
 /* Active radio button icon */
 .ui-page-theme-b .ui-radio-on:after,
@@ -521,7 +521,7 @@ html .ui-bar-b .ui-radio-on:after,
 html .ui-body-b .ui-radio-on:after,
 html body .ui-group-theme-b .ui-radio-on:after,
 .ui-btn.ui-radio-on.ui-btn-b:after {
-	border-color: #ffffff /*{b-active-background-color}*/;
+	border-color: #B52F3C /*{b-active-background-color}*/;
 }
 /* Focus */
 .ui-page-theme-b .ui-btn:focus,
@@ -536,9 +536,9 @@ html .ui-body-b .ui-focus,
 html body .ui-group-theme-b .ui-focus,
 html head + body .ui-btn-b.ui-focus,
 html head + body .ui-body-b.ui-focus {
-	-webkit-box-shadow: 0 0 12px #ffffff /*{b-active-background-color}*/;
-	-moz-box-shadow: 0 0 12px #ffffff /*{b-active-background-color}*/;
-	box-shadow: 0 0 12px #ffffff /*{b-active-background-color}*/;
+	-webkit-box-shadow: 0 0 12px #B52F3C /*{b-active-background-color}*/;
+	-moz-box-shadow: 0 0 12px #B52F3C /*{b-active-background-color}*/;
+	box-shadow: 0 0 12px #B52F3C /*{b-active-background-color}*/;
 }
 
 

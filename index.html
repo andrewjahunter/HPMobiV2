@@ -76,6 +76,17 @@
         </div>
     </div>
 
+    <div data-role="popup" id="globalDidYouKnow" data-theme="a" data-dismissible="false" style="max-width: 400px; display: none">
+        <div data-role="header">
+            <h1>Hints and Tips</h1>
+        </div>
+        <div role="main" class="ui-content">
+            <p id="glbMsgDidYouKnow">
+            </p>
+            <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-rel="back">Okay, I got it</a>
+        </div>
+    </div>
+
 
     <div data-role="panel" class="ui-body-f" data-swipe-close="false"  id="appMenuPanel" data-position="right" data-display="reveal" style="display: none; background-color: #303030; height:100% ">
 
@@ -83,28 +94,35 @@
 
 
 
-            <ul data-role="listview" data-count-theme="e" class="ui-mini" data-inset="true" data-theme="f">
-                <li data-icon="user"><a href="#" id="btnAppMenuGoProfile">Profile</a></li>
-                <li data-icon="news"><a href="#" id="btnAppMenuGoNews">News <span class="ui-li-count newsBubbleCount" style="display:none"></span></a></li>
-                <li data-icon="subscribe"><a href="#" id="btnAppMenuGoSubs">Manage Subsriptions</a></li>
-                <li data-icon="give" class="givingModule"><a href="#" id="btnAppMenuGoGive">Give</a></li>
-                <li data-icon="calendar" class="eventsModule"><a href="#" id="btnAppMenuGoEvents">Events</a></li>
-                <li data-icon="group" class="groupsModule" id="btnAppMenuGoGroups"><a href="#">Groups</a></li>
-                <li data-icon="bullets" class="customListsModule"><a href="#" id="btnAppMenuGoLists">Lists</a></li>
-
-                <li data-icon="sermons" class="sermonsModule"><a href="#" id="btnAppMenuGoSermons">Sermons</a></li>
-                <li data-icon="missions"><a href="#" id="btnAppMenuGoMissions">Missions</a></li>
-                <li data-icon="mail"><a href="#" id="btnAppMenuGoMessages">Messages<span class="ui-li-count messagesBubbleCount" style="display:none"></span></a></li>
+        <ul data-role="listview" data-count-theme="e" class="ui-mini" data-inset="true" data-theme="a">
+            <li data-icon="user"><a href="#" id="btnAppMenuGoProfile">Profile</a></li>
+            <li data-icon="news"><a href="#" id="btnAppMenuGoNews">News <span class="ui-li-count newsBubbleCount" style="display:none"></span></a></li>
+            <li data-icon="sermons" class="sermonsModule"><a href="#" id="btnAppMenuGoSermons">Sermons</a></li>
+        </ul>
+        <br />
 
 
-                <li data-icon="searchpeople"><a href="#" id="btnAppMenuGoPeople">Search People</a></li>
-                <li data-icon="findachurch"><a href="#" id="btnAppMenuGoFindAChurch">Find Church</a></li>
+        <ul data-role="listview" data-count-theme="e" class="ui-mini" data-inset="true" data-theme="f">
 
-               
-               
+            <li data-icon="subscribe"><a href="#" id="btnAppMenuGoSubs">Manage Subscriptions</a></li>
+            <li data-icon="give" class="givingModule"><a href="#" id="btnAppMenuGoGive">Give</a></li>
+            <li data-icon="calendar" class="eventsModule"><a href="#" id="btnAppMenuGoEvents">Events</a></li>
+            <li data-icon="group" class="groupsModule" id="btnAppMenuGoGroups"><a href="#">Groups</a></li>
+            <li data-icon="bullets" class="customListsModule"><a href="#" id="btnAppMenuGoLists">Lists</a></li>
 
-                <li data-icon="gear"><a href="#" id="btnAppMenuGoSettings">Settings</a></li>
-            </ul>
+
+            <li data-icon="missions"><a href="#" id="btnAppMenuGoMissions">Missions</a></li>
+            <li data-icon="mail"><a href="#" id="btnAppMenuGoMessages">Messages<span class="ui-li-count messagesBubbleCount" style="display:none"></span></a></li>
+
+
+            <li data-icon="searchpeople"><a href="#" id="btnAppMenuGoPeople">Search People</a></li>
+            <li data-icon="findachurch"><a href="#" id="btnAppMenuGoFindAChurch">Find Church</a></li>
+
+
+
+
+            <li data-icon="gear"><a href="#" id="btnAppMenuGoSettings">Settings</a></li>
+        </ul>
 
             <div style="display:none; font-size:small" class="ui-bar ui-bar-e" id="appStopMessage"></div>
             <div style="display:none; font-size:small" class="ui-bar ui-bar-d" id="appNoticeMessage"></div>

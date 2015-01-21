@@ -157,12 +157,12 @@
 
                 <div class="newsFlashAdd newsView" style="display:none">
 
-                    <div class="ui-bar ui-bar-a">
+                    <!--<div class="ui-bar ui-bar-a">
                         <div style="text-align:center">Send News</div>
                     </div>
                     <div class="ui-content ui-body-g" style="font-size:small; text-align:center">
                         <p>Send a news flash to everyone subscribed to this database.</p>
-                    </div>
+                    </div>-->
 
                     <div class="ui-field-contain">
                         <div> <label for="ddlAddNewsChooseChannel">Choose Channel</label></div>
@@ -170,15 +170,37 @@
 
                     </div>
                     <!--, -->
-                    <div class="ui-field-contain">
-                        <!--<label for="txtAddNewsContent">News Content</label>-->
-                        <textarea rows="6" id="txtAddNewsContent" placeholder="type news item here"></textarea>
-                    </div>
+                    <!--<div id="addNewsImageWeb" style="display:none">
+                      <p>Pictures can only be added when using the native version of the application on your phone.</p>
 
+                   
+                        <input type="file" id="btnTESTIMGSelector" />
+                        <input type="button" id="btnTestLoadIMG" value="Import" />
+
+                    </div>-->
+
+                    
+                        
+                    <div class="ui-field-contain">
+                        <textarea rows="3" id="txtAddNewsContent" placeholder="type your news here..."></textarea>
+                       
+                    </div>
+                    <div class="ui-btn ui-btn-b ui-btn-icon-left ui-icon-camera " id="btnNewsAddNativePhoto">Add Picture (optional)</div>
+
+                    <div style="display:none" id="newsImage">
+                        <img src="" id="imgNewsFlashPicture" style="max-height:200px; max-width:100%; display:block; margin-left:auto;margin-right:auto" />
+                        <a href="#" id="btnNewsRemoveImage">Remove Image</a>
+                    </div>
                     <button class="ui-btn ui-btn-a " id="btnAddNewNewsFlash">Send Newsflash</button>
 
                 </div>
 
+                <div data-role="popup" id="popupNewsPhotoSource" data-theme="a">
+                    <ul data-role="listview"  data-inset="true" style="min-width:210px;">
+                        <li><a href="#" id="btnNewsNewPhoto">Take Picture</a></li>
+                        <li><a href="#" id="btnNewsExistingPhoto">Choose Existing Picture</a></li>
+                    </ul>
+                </div>
 
             </div>
         </div>
