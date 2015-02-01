@@ -30,9 +30,9 @@
                 }
 
             @media (min-width: 28em) {
-                    
+
                 /*Repeated from rule .ui-flipswitch above*/
-                     .ui-field-contain > label + .subs-custom-size-flipswitch.ui-flipswitch {
+                     .ui-field-contain > label + .subs-custom-size-flipswitch.ui-flipswitch {
                     width: 1.875em;
                 }
             }
@@ -42,13 +42,13 @@
 
             <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-right ui-icon-bars ui-btn-icon-notext btnOpenAppMenu"></a>
 
-            <h3>Subscriptions</h3>
+            <h3 id="subsHeader">Subscriptions</h3>
         </div><!-- /header -->
 
         <div role="main" class="ui-content">
             <div class="pgContent">
 
-                <div id="noSubsItems" style="display:none">
+                <div class="subsView subsNone" style="display:none">
 
                     <div class="ui-bar ui-bar-b">
                         <div style="text-align:center">No Subscriptions</div>
@@ -63,37 +63,39 @@
                     </div>
 
                 </div>
+             
+                <div class="subsView subsActive" style="display:none">
+                    <button class="ui-btn ui-btn-b custom-ui-mini" id="btnViewInActiveSubs">View Other Church Channels</button>
 
-
-                <div id="subsItems" style="display:none; font-size:small">
-
-                    <div class="ui-bar ui-bar-f" style="text-align:center">
-                        <small>Click the 'X' to unsubscribe from the churches below.</small>
-                    </div>
-                    <div data-bind="foreach: ko.utils.arrayFilter(subs(), function(itm){ return itm.subscribed})">
+                    <div data-bind="foreach: ko.utils.arrayFilter(subs(), function(itm){ return itm.hasSub})">
                         <div class="ui-bar ui-bar-b" style="text-align: center">
                             <h3>
-                                <a href="#" class=" ui-btn-right ui-icon-delete ui-btn-c ui-btn-icon-notext btnUnSubscribeFromPortal" data-bind="attr:{'data-id':portalId,'data-name':portalName}"></a>
                                 <small data-bind="html: portalName"></small>
                             </h3>
                         </div>
-                        <div style="text-align:center">
 
-                            <fieldset>
-                                <div data-role="fieldcontain">
-                                    <input type="checkbox" data-wrapper-class="subs-custom-size-flipswitch" data-off-text="Email Off" data-on-text="Email On" data-role="flipswitch" class="portalSubsFlipSwtch" data-bind="checked:sendEmail,attr:{'data-id':portalId,'data-name':portalName}">
-                                </div>
-                            </fieldset>
-                            <div data-bind="visible:sendEmail"><small><i>You will receive news to this app and via email.</i></small></div>
-                            <div data-bind="visible:!sendEmail"><small><i>You will receive news only to this app.</i></small></div>
+                        <table width="100%" border="0">
+                            <tbody data-bind="foreach: channels">
+                                <tr>
+                                    <td><div data-bind="html: channelName"></div></td>
+                                    <td align="right" width="80px" ><div><input type="checkbox" data-bind="checked:subscribed,attr:{'data-id':channelId}" data-on-text="✓" data-off-text="X" data-role=" flipswitch" class="channelSubsFlipSwtch custom-ui-mini"></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    
 
-                        </div>
                     </div>
+
+                </div>
+
+                <div class="subsView subsInActive" style="display:none">
+                    <button class="ui-btn ui-btn-b custom-ui-mini" id="btnViewActiveSubs">View Active Channels</button>
+
 
                     <div class="ui-bar ui-bar-f" style="text-align:center">
-                        <small>Click the '✓' to subscribe to any of the churches below</small>
+                        <small>Click the '✓' next to the church name to view that churches available channels.</small>
                     </div>
-                    <div data-bind="foreach: ko.utils.arrayFilter(subs(), function(itm){ return !itm.subscribed})">
+                    <div data-bind="foreach: ko.utils.arrayFilter(subs(), function(itm){ return !itm.hasSub})">
                         <div class="ui-bar ui-bar-g" style="text-align: center">
                             <h3>
                                 <a href="#" class=" ui-btn-right ui-icon-check ui-btn-b ui-btn-icon-notext btnSubscribeToPortal" data-bind="attr:{'data-id':portalId,'data-name':portalName}"></a>
@@ -104,9 +106,13 @@
                     </div>
 
 
-
-
                 </div>
+
+
+             
+
+
+
 
                 <div data-role="popup" id="popupAddMyChurchNews" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width: 400px;">
                     <div data-role="header" data-theme="b">

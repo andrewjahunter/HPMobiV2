@@ -2,32 +2,75 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
+    <script type="text/javascript">
+        window.gddAppInfo = 'appcode:2000|version:2.0.2'
+        window.gdd = null
+        window.gddStartUrl = location.href;
+        window.gddAppRestart = function () {
+            //alert("Start URL: " + window.gddStartUrl + '?' + (new Date).getTime())
+            location.href = window.gddStartUrl
+
+
+            //if ((document.URL.indexOf('http://') === -1) && (document.URL.indexOf('https://') === -1)) {
+            //    var appCloseErr = "A device error has occured in your phone, please close and restart the application on your phone."
+            //    if (device) {
+            //        if (device.platform) {
+            //            if (device.platform == 'android' || device.platform == 'Android') {                            
+            //                location.href = "file:///android_asset/www/index.html"
+            //            } else {
+            //                alert(location.href)
+            //                location.href = "index.html"
+            //            }
+            //        } else {
+            //            alert(appCloseErr)
+            //        }
+            //    } else {
+            //        alert(appCloseErr)
+            //    }
+
+
+            //} else {
+            //    window.location.href = "index.html";
+            //}
+
+        };
+
+
+
+    </script>
+
+    <link href="styles/jquery.mobile.structure-1.4.5.min.css" rel="stylesheet" />
+    <link href="styles/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+    <link href="styles/jquery.mobile.icons-1.4.5.min.css" rel="stylesheet" />
+    <script src="scripts/libraries/jquery-1.11.1.min.js"></script>
+    <script src="scripts/libraries/jquery.mobile-1.4.5.min.js"></script>
 
 
     <link href="styles/jquery-ui.structure.min.css" rel="stylesheet" />
     <link href="styles/jquery-ui.min.css" rel="stylesheet" />
+    <script src="scripts/libraries/jquery-ui.min.js"></script>
+
     <link href="styles/jquery.mobile.datepicker.css" rel="stylesheet" />
     <link href="styles/jquery.mobile.datepicker.theme.css" rel="stylesheet" />
-    <link href="styles/jquery.mobile.structure-1.4.5.min.css" rel="stylesheet" />
-    <link href="styles/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
-    <link href="styles/jquery.mobile.icons-1.4.5.min.css" rel="stylesheet" />
-    <script data-main="scripts/jsconfig.min.js" src="scripts/libraries/require.js"></script>
+
     <link href="styles/app.css" rel="stylesheet" />
     <link href="styles/client.css" rel="stylesheet" />
     <link href="styles/app.mobile.min.css" rel="stylesheet" />
     <link href="styles/jquery.bxslider.css" rel="stylesheet" />
 
-    <!--<link href="styles/jquery.mobile.datepicker.css" rel="stylesheet" />-->
-    <!--<script src="scripts/libraries/jquery-ui.min.js"></script>-->
-    <!--<script src="scripts/libraries/jquery-1.11.1.min.js"></script>-->
-    <!--<script src="scripts/global/appevents.js"></script>-->
-    <script type="text/javascript">
-        window.gddAppInfo = 'appcode:2000|version:2.0.1'
+
+    <script src="scripts/libraries/knockout-3.2.0.js"></script>
+    <script src="scripts/libraries/knockout.mapping.js"></script>
+    <script src="scripts/libraries/datepicker.js"></script>
+    <script src="scripts/global/appevents.js"></script>
+    <script src="scripts/libraries/jquery.bxslider.min.js"></script>
+    <script src="scripts/libraries/jquery.validate.min.js"></script>
+
+    <script data-main="scripts/jsconfig.min.js" src="scripts/libraries/require.js"></script>
 
 
 
 
-    </script>
     <script type="text/javascript" src="cordova.js"></script>
 
 </head>

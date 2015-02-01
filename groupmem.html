@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Group Membership</title>
+
+
+
+    <script type="text/javascript">
+        window.location.href = "index.html";
+    </script>
+</head>
+<body>
+    <div data-role="page" id="pg_groupmem" data-theme="b" data-bind="with:pages.groupmem.view">
+
+
+
+        <!--<div class="pgContent">-->
+
+
+
+        <div data-role="header">
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-left ui-icon-arrow-l ui-btn-icon-notext btnBackToPrevPage"></a>
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-right ui-icon-bars ui-btn-icon-notext  btnOpenAppMenu "></a>
+
+            <h1 id="groupMemHeader">Membership</h1>
+
+        </div>
+
+        <div role="main" class="ui-content">
+            <div class="pgContent">
+
+                <div class="noGrpMem grpMemView" style="display:none">
+
+                    <div class="ui-bar ui-bar-g">
+                        <div style="text-align:center">No Groups</div>
+                    </div>
+                    <div class="ui-content ui-body-g" style="font-size:small">
+                        <p>We do not have any records of you being an active member in any of the groups in this database.</p>
+                    </div>
+
+                </div>
+
+                <div class="grpMem grpMemView" style="display:none">
+
+                    <div data-bind="foreach:membership">
+                        <div class="ui-bar ui-bar-b" data-bind="html:groupName" style="text-align:center"></div>
+                        <table width="100%">
+                            <tr>
+                                <td>Leader: </td>
+                                <td data-bind="html:leaderName"></td>
+                            </tr>
+                            <tr>
+                                <td>Leader Email: </td>
+                                <td data-bind="html:leaderEmail"></td>
+                            </tr>
+                            <tr>
+                                <td>Leader Mobile: </td>
+                                <td data-bind="html:leaderMobile"></td>
+                            </tr>
+                            <tr>
+                             
+                                <td colspan="2">
+                                    <div class="ui-bar ui-bar-f" style="text-align:center; font-size:small">Membership history</div>
+                                        <div  data-bind="foreach: statusItems">
+                                            <div data-bind="html: 'On ' + statusDate + ' their status was ' + statusDisplay" style="font-size: small"></div>
+                                        </div>
+                                  
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                 
+                </div>
+             
+
+            </div>
+        </div>
+
+
+       
+
+        <div data-role="footer" data-theme="g" data-tap-toggle="false"  data-position="fixed">
+
+         
+
+
+            <div data-role="navbar" class="newsItem  newsView " style="display:none">
+                <ul>
+
+                    <!--<li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-subscribe btnGoToSubs"><small>Subscriptions</small></div></li>-->
+                    <li><div class="ui-btn ui-btn-c ui-btn-icon-top ui-icon-share ui-nodisc-icon" id="btnNewsItemShare2"><small>Share This</small></div></li>
+                    <!--<li><div class="ui-btn ui-btn-c ui-btn-icon-top ui-icon-plus btnGoToAddNewsFlash "><small>Share News</small></div></li>-->
+
+
+                </ul>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+    <!--</div>-->
+</body>
+</html>
