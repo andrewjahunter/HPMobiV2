@@ -95,9 +95,14 @@ $(document).on("pagecontainershow", function (event, ui) {
                 //    $("#appMenuPanel").panel("close");
                 //});
                 
-                $("#btnAppMenuGoGive").off().on(gdd.click(), function () {
+                $(".btnAppMenuGoGive").off().on(gdd.click(), function () {
                     //$("#appMenuPanel").one("panelclose", function (event, ui) {
+                    if (gdd.session.signedIn()) {
                         gdd.loadPage(gdd.pages.give, false, "slide")
+                    } else {
+                        gdd.showMsg("To access the giving features you must be logged in. Please click Log In at the bottom of the menu.")
+                    }
+                       
                     //});
                     //$("#appMenuPanel").panel("close");
                 })
