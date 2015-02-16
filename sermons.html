@@ -16,6 +16,8 @@
 
 
         <div data-role="header">
+            <!--<a href="#" class="noBorderButton ui-btn ui-btn-a ui-btn-left btnSermonAppSignIn  btnSignInFromApp" style="display:none">Sign In</a>-->
+
             <!--<a href="#" class="ui-btn ui-btn-a ui-btn-left ui-icon-arrow-d ui-btn-icon-notext sermonView   btnSermonViewBack" style="display:none"></a>-->
             <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-left ui-icon-arrow-l ui-btn-icon-notext sermonView itemsView  btnSermonViewBack" style="display:none"></a>
 
@@ -53,7 +55,7 @@
                         </div>
                         <div class="viewSermons" data-bind="attr:{'data-id':id}">
                             <table width="100%">
-                                <tr>
+                                <tr class="signedInModule" style="display:none">
                                     <td colspan="2">
                                         <div class="ui-bar ui-bar-c" data-bind="visible:isSubscribed" style="font-size:x-small">
                                             You are subscribed to this channel
@@ -116,7 +118,7 @@
                             <h3>
                                 <a href="#" class=" ui-btn-left ui-icon-audio ui-btn-icon-notext listenNow" data-bind="attr:{'data-id':id}"></a>
 
-                                <a href="#" class=" ui-btn-right ui-icon-carat-d ui-btn-icon-notext sermonMenu" data-bind="attr:{'data-id':id}"></a>
+                                <a href="#" class=" ui-btn-right ui-icon-carat-d ui-btn-icon-notext sermonMenu signedInModule" data-bind="attr:{'data-id':id}"></a>
                                 <span data-bind="html: publishDate"></span>
 
                             </h3>
@@ -161,7 +163,7 @@
 
                         <li><a href="#" id="btnSermonsView">View Sermons</a></li>
 
-                        <li><a href="#" id="btnSermonsToggleSubs">Subscribe</a></li>
+                        <li><a href="#" id="btnSermonsToggleSubs" class="signedInModule">Subscribe</a></li>
 
                     </ul>
                 </div>

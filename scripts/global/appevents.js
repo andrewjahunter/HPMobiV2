@@ -48,6 +48,18 @@ $(document).on("pagecontainershow", function (event, ui) {
                     })
                 }
                 
+                $(".portalName").html(gdd.session.activeSession.portalName())
+
+
+                $(".btnSignUpFromApp").off().on(gdd.click(), function () {
+                    gdd.pages.signin.view.signUpFromAppRequested = true;
+                    gdd.loadPage(gdd.pages.signin)
+                })
+
+                $(".btnSignInFromApp").off().on(gdd.click(), function () {
+                    gdd.pages.signin.view.signUpFromAppRequested = false;
+                    gdd.loadPage(gdd.pages.signin)
+                })
                
 
                 $(".btnOpenAppMenu").off().on(gdd.click(), function () {
@@ -91,14 +103,14 @@ $(document).on("pagecontainershow", function (event, ui) {
                 })
                 
                 
-                $("#btnAppMenuGoMissions").off().on(gdd.click(), function () {
+                $(".btnAppMenuGoMissions").off().on(gdd.click(), function () {
                     //$("#appMenuPanel").one("panelclose", function (event, ui) {
                         gdd.loadPage(gdd.pages.missions, false, "slide")
                     //});
                     //$("#appMenuPanel").panel("close");
                 })
 
-                $("#btnAppMenuGoFindAChurch").off().on(gdd.click(), function () {
+                $(".btnAppMenuGoFindAChurch").off().on(gdd.click(), function () {
                    // $("#appMenuPanel").one("panelclose", function (event, ui) {
                         gdd.loadPage(gdd.pages.findachurch, false, "slide")
                     //});
@@ -166,7 +178,7 @@ $(document).on("pagecontainershow", function (event, ui) {
 
                 
 
-                $("#btnSettingsMenuSession").off().on(gdd.click(), function () {
+                $(".btnSettingsMenuSession").off().on(gdd.click(), function () {
                    // $("#appSettingsPanel").one("panelclose", function (event, ui) {
                         gdd.loadPage(gdd.pages.sessionInfo, false, "slide")
 
@@ -184,7 +196,7 @@ $(document).on("pagecontainershow", function (event, ui) {
                 
                 
 
-                $("#btnSettingsMenuAbout").off().on(gdd.click(), function () {
+                $(".btnSettingsMenuAbout").off().on(gdd.click(), function () {
                     //$("#appSettingsPanel").one("panelclose", function (event, ui) {
                         gdd.loadPage(gdd.pages.about, false, "slide")
 
@@ -233,7 +245,7 @@ $(document).on("pagecontainershow", function (event, ui) {
                     //$("#appMenuPanel").panel("close");
                 })
 
-                $("#btnAppMenuGoSermons").off().on(gdd.click(), function () {
+                $(".btnAppMenuGoSermons").off().on(gdd.click(), function () {
                    // $("#appMenuPanel").one("panelclose", function (event, ui) {
                         gdd.loadPage(gdd.pages.sermons, false, "slide")
                    // });
@@ -242,7 +254,7 @@ $(document).on("pagecontainershow", function (event, ui) {
 
                 
                 
-                $("#btnAppMenuGoNews").off().on(gdd.click(), function () {
+                $(".btnAppMenuGoNews").off().on(gdd.click(), function () {
                     //$("#appMenuPanel").one("panelclose", function (event, ui) {
                         gdd.loadPage(gdd.pages.news, false, "slide")
                     //});
@@ -258,7 +270,7 @@ $(document).on("pagecontainershow", function (event, ui) {
 
             
                 $(".pgContent").on("swipeleft", function () {
-                    if (gdd.utils.activePage.id != "pg_index") {
+                    if ((gdd.utils.activePage.id != "pg_index") && (gdd.utils.activePage.id != "pg_signin")) {
                         $("#appMenuPanel").panel("open");
                     }
                    
