@@ -38,40 +38,53 @@
 
                 <div class="noNews newsView" style="display:none">
 
-                    <div class="ui-bar ui-bar-a">
-                        <div style="text-align:center">Important!</div>
-                    </div>
-                    <div class="ui-content ui-body-g" style="font-size:small">
-                        <p>We were not able to find any news items that match your subscription profile.</p>
-                        <p>You will only recieve news from churches/ministries that you have subscribed to. Please check your subscription profile.</p>
+                    <div class="signedInModule">
+                        <div class="ui-bar ui-bar-a">
+                            <div style="text-align:center">No News</div>
+                        </div>
+                        <div class="ui-content ui-body-g" style="font-size:small">
+                            <p>We were not able to find any news items that match your subscription profile.</p>
+                            <p>You will only recieve news from churches/ministries that you have subscribed to. Please check your subscription profile.</p>
 
-                        <div class="ui-btn ui-btn-g btnGoToSubs ui-mini signedInModule">Manage Subscriptions</div>
+                            <div class="ui-btn ui-btn-g btnGoToSubs ui-mini">Manage Subscriptions</div>
+                        </div>
                     </div>
+
+                    <div class="publicModule">
+                        <div class="ui-bar ui-bar-a">
+                            <div style="text-align:center">No News</div>
+                        </div>
+                        <div class="ui-content ui-body-g" style="font-size:small">
+                            <p>Currently this church does not have any published news items</p>
+                        </div>
+                        <div class="ui-btn ui-btn-b btnRefreshNewsFeeds">Refresh</div>
+                    </div>
+
 
                 </div>
 
 
                 <div class="newsFeed newsView">
-                    <div class="ui-bar-g btnRefreshNewsFeeds preNewsContent"  style="text-align:center; white-space:normal; margin-bottom:3px; display:none"><small>click here to refresh news</small></div>
+                    <div class="ui-bar-g btnRefreshNewsFeeds preNewsContent" style="text-align:center; white-space:normal; margin-bottom:3px; display:none"><small>click here to refresh news</small></div>
 
 
                     <div data-bind="foreach:newsItems">
                         <div class="ui-corner-all ">
                             <div class="ui-bar ui-bar-b" style="padding:5px; height:50px; height:100%">
-                                <table width="100%" >
+                                <table width="100%">
                                     <tr>
                                         <td><div data-bind="html:title, attr:{'data-id':id}" class="newsFeedClick" style="text-align:center"></div></td>
                                         <td align="right">
                                             <div>
                                                 <button class="noBorderButton ui-mini ui-nodisc-icon ui-btn ui-btn-a ui-icon-share ui-btn-icon-notext btnNewsItemShareFromList" data-bind="attr:{'data-id':id}"></button>
                                             </div>
-                                            
+
 
                                         </td>
                                     </tr>
                                 </table>
                                 <!--<h4>
-                                    
+
 
 
                                 </h4>-->
@@ -175,17 +188,17 @@
                     <!--<div id="addNewsImageWeb" style="display:none">
                       <p>Pictures can only be added when using the native version of the application on your phone.</p>
 
-                   
+
                         <input type="file" id="btnTESTIMGSelector" />
                         <input type="button" id="btnTestLoadIMG" value="Import" />
 
                     </div>-->
 
-                    
-                        
+
+
                     <div class="ui-field-contain">
                         <textarea rows="3" id="txtAddNewsContent" placeholder="type your news here..."></textarea>
-                       
+
                     </div>
                     <div class="ui-btn ui-btn-b ui-btn-icon-left ui-icon-camera " id="btnNewsAddNativePhoto">Add Picture (optional)</div>
 
@@ -198,7 +211,7 @@
                 </div>
 
                 <div data-role="popup" id="popupNewsPhotoSource" data-theme="a">
-                    <ul data-role="listview"  data-inset="true" style="min-width:210px;">
+                    <ul data-role="listview" data-inset="true" style="min-width:210px;">
                         <li><a href="#" id="btnNewsNewPhoto">Take Picture</a></li>
                         <li><a href="#" id="btnNewsExistingPhoto">Choose Existing Picture</a></li>
                     </ul>
@@ -208,9 +221,9 @@
         </div>
 
 
-       
 
-        <div data-role="footer" data-theme="g" data-tap-toggle="false"  data-position="fixed">
+
+        <div data-role="footer" data-theme="g" data-tap-toggle="false" data-position="fixed">
 
             <!--<div data-role="navbar" class="newsFeed noNews  newsView">
                 <ul>
