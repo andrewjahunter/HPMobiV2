@@ -136,6 +136,12 @@ $(document).on("pagecontainershow", function (event, ui) {
                    // $("#appMenuPanel").panel("close");                    
                 })
 
+                $("#btnAppMenuGoFollowUp").off().on(gdd.click(), function () {
+                   
+                    gdd.loadPage(gdd.pages.followup, false, "slide")
+                 
+                })
+
                 $("#btnAppMenuGoLists").off().on(gdd.click(), function () {
                    // $("#appMenuPanel").one("panelclose", function (event, ui) {
                         gdd.loadPage(gdd.pages.lists, false, "slide")
