@@ -297,6 +297,12 @@ $(document).on("pagecontainershow", function (event, ui) {
                     $("#appSettingsPanel").panel("close");
                 });
 
+
+                $("#appMenuPanel").off().on("panelbeforeopen", function (event, ui) {
+                    gdd.utils.setMenuPanelHeight()
+                });
+
+
                 
 
 

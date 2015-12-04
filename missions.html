@@ -12,7 +12,12 @@
 
     <div data-role="page" id="pg_missions" data-theme="b" data-bind="with:pages.missions.view">
 
-
+        <style>
+            .comingImg {
+                width: 25px;
+                height: 25px;
+            }
+        </style>
 
         <div data-role="header">
             <!--<a href="#" class="noBorderButton ui-btn ui-btn-a ui-btn-left publicModule   btnSignInFromApp" style="display:none">Sign In</a>-->
@@ -26,6 +31,19 @@
 
         <div role="main" class="ui-content">
             <div class="pgContent">
+
+                <div class="signedInModule">
+                    <label for="ddlMissionsScope" class="select ddlMissionsScope">Filter missions by:</label>
+                    <select name="ddlMissionsScope" class="ddlMissionsScope" id="ddlMissionsScope">
+                        <option value="0" id="ddlMissionPortal"></option>
+                        <option value="1" id="ddlMissionOrg"></option>
+                        <option value="2" id="ddlMissionFamily" selected></option>
+                        <option value="3">All Missions</option>
+                    </select>
+                </div>
+              
+
+
                 <div class="missionsView noMissions" style="display:none">
 
                     <div class="ui-bar ui-bar-b">
@@ -41,7 +59,110 @@
 
                 <div class="missionsView missionsList" style="display:none">
 
-                    <div data-bind="foreach:missions">
+                    
+
+                    <div data-bind=" foreach: missions">
+                        <div class="ui-bar ui-bar-b">
+                            <div style="text-align: center" data-bind="html: name"></div>
+                            <div style="text-align:center">
+                                <small data-bind="html: startDate + ' to ' + endDate  "></small>
+                            </div>
+
+                           
+                        </div>
+
+
+                        <table width="100%">
+                            <tr>
+                                <td valign="top" width="80px">
+                                    <div style="text-align:center; margin-bottom:5px">
+                                        <img width="80" height="80" data-bind="attr: {src: imageUrl}" />
+                                    </div>
+                                </td>
+                                <td valign="top">
+                                    <div>
+                                        <table>
+                                            <tr>
+                                                <td><span style="font-size:small">Hosted By:</span></td>
+                                                <td><span style="font-size:small" data-bind="html:ownerPortalName"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span style="font-size:small">Tag Line:</span></td>
+                                                <td><span style="font-size:small" data-bind="html:tagLine"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span style="font-size:small">Location:</span></td>
+                                                <td><span style="font-size:small" data-bind="html:venueAddress"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span style="font-size:small">Type:</span></td>
+                                                <td><span style="font-size:small" data-bind="html:missionPhase"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span style="font-size:small">Contact Person:</span></td>
+                                                <td><span style="font-size:small" data-bind="html:contactPerson"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span style="font-size:small">Contact Email:</span></td>
+                                                <td><span style="font-size:small" data-bind="html:contactPersonEmail"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span style="font-size:small">Tel Number:</span></td>
+                                                <td><span style="font-size:small" data-bind="html:contactPersonTel"></span></td>
+                                            </tr>
+                                           
+                                           
+                                        </table>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="ui-content ui-body-g" style="text-align: left; font-size:small" data-bind="html: description">
+
+                                    </div>
+                                </td>
+                            </tr>
+                           
+                        </table>
+
+                        <div style="text-align:left">
+                            
+
+
+                            <table width="100%" >
+                                <tr>
+                                    <td>
+                                    
+                                        <a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-edit ui-btn-icon-notext ui-btn-inline evWebVersion " data-bind="attr: {'data-id': id}  ">Edit</a>
+
+                                    </td>
+                                    <td align="right">
+                                        <div data-bind="visible:(coming === 0) ? true:false  ">
+                                            <img src="img/reddelete.png" class="comingImg" />
+                                        </div>
+                                        <div data-bind="visible:(coming === 1) ? true:false  ">
+                                            <img src="img/greencheck.png" class="comingImg" />
+                                        </div>
+                                        <div data-bind="visible:(coming === -1) ? true:false  ">
+                                            <img src="img/orangequestion.png" class="comingImg" />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+                    <!--<div data-bind="foreach:missions">
 
                         <div class="ui-bar ui-bar-b" style="text-align:center" data-bind="html:name">
 
@@ -122,7 +243,7 @@
 
 
 
-                    </div>
+                    </div>-->
 
 
                 </div>
@@ -138,7 +259,9 @@
             <div data-role="navbar" >
                 <ul>
                  
-                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-refresh" id="btnReloadMissions"><small>Refresh Mission List</small></div></li>
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-refresh" id="btnReloadMissions"><small>Refresh</small></div></li>
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-location" id="btnViewOnMap"><small>Map View</small></div></li>
+
 
                 </ul>
             </div>

@@ -4,13 +4,13 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.godochurch.hispeople"
-        versionCode = "120"
-        version   = "2.0.6">
+        versionCode = "121"
+        version   = "2.0.7">
 
   <name>His People</name>
 
   <description>
-    You do ministry, we do admin
+   Church administration made easy
   </description>
 
   <author href="http://phonegap.com" email="support@gododata.com">
@@ -18,19 +18,19 @@
   </author>
 
   <gap:config-file platform="ios" parent="CFBundleVersion">
-    <string>2.0.6</string>
+    <string>2.0.7</string>
   </gap:config-file>
 
   <gap:config-file platform="ios" parent="CFBundleShortVersionString">
 
-    <string>206</string>
+    <string>207</string>
 
   </gap:config-file>
 
   <preference name="permissions"                value="none"/>
 
   <preference name="splash-screen-duration" value="3000" />
-  <preference name="phonegap-version"  value="3.7.0" />
+  <preference name="phonegap-version"  value="cli-5.2.0" />
   <preference name="orientation"                value="portrait" />
   <preference name="fullscreen"                 value="false" />
   <preference name="target-device"              value="universal" />
@@ -50,13 +50,13 @@
   <gap:plugin name="org.apache.cordova.device-orientation" />
   <gap:plugin name="org.apache.cordova.geolocation" />
   <gap:plugin name="org.apache.cordova.network-information" />
-  <gap:plugin name="org.apache.cordova.inappbrowser" version="0.3.3" />
-  <gap:plugin name="org.apache.cordova.media" version="0.2.8" />
+  <gap:plugin name="org.apache.cordova.inappbrowser"  />
+  <gap:plugin name="org.apache.cordova.media"  />
   <gap:plugin name="nl.x-services.plugins.socialsharing" />
 <gap:plugin name="tr.bel.mamak.sms_plagin"  />
   <gap:plugin name="com.hutchind.cordova.plugins.streamingmedia"  />
   <gap:plugin name="org.apache.cordova.camera"  />
-  <gap:plugin name="com.phonegap.plugins.barcodescanner" version="2.2.0" />
+  <gap:plugin name="com.phonegap.plugins.barcodescanner"  />
 
   <!--<feature name="http://api.phonegap.com/1.0/device" />-->
   <feature name="http://api.phonegap.com/1.0/geolocation"/>

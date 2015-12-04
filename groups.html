@@ -323,7 +323,7 @@
                             <input id="txtGrpsEditSuburb" data-bind="value: selectedGroup.suburb" type="text" />
 
                         </div>
-                        <small>(The Google map was not able to determine the suburb where this group meets. Please manually enter it here)</small>
+                        <!--<small>(The Google map was not able to determine the suburb where this group meets. Please manually enter it here)</small>-->
                     </div>
 
 
@@ -452,7 +452,7 @@
 
                     <button class="ui-btn ui-btn-e" id="btnDeleteMemberForever">Delete Member</button>
 
-                    <div data-role="popup" id="memberDeletePopup" style="max-width: 400px;"
+                    <div data-role="popup" data-history="false" id="memberDeletePopup" style="max-width: 400px;"
                          class="ui-corner-all">
                         <div data-role="header" data-theme="e" class="ui-corner-top">
                             <h1>Delete?</h1>
@@ -773,7 +773,7 @@
 
 
 
-                <div data-role="popup" id="popupGrpMenu" data-theme="a">
+                <div data-role="popup" data-history="false" id="popupGrpMenu" data-theme="a">
                     <ul data-role="listview" class="ui-mini" data-inset="true" style="min-width:210px;">
 
                         <li><a href="#" id="btnGrpMemSendSMS">SMS Members</a></li>
@@ -787,7 +787,7 @@
                 </div>
 
 
-                <div data-role="popup" id="popupGrpMore" data-theme="a">
+                <div data-role="popup" data-history="false" id="popupGrpMore" data-theme="a">
                     <ul data-role="listview" class="ui-mini" data-inset="true" style="min-width:210px;">
                         <li><a href="#" id="btnRefreshGroups2">Refresh Groups</a></li>
                         <li><a href="#" id="btnRefreshGrpRefData">Refresh Core</a></li>
@@ -795,7 +795,7 @@
                 </div>
 
 
-                <div data-role="popup" id="grpDeletePopup" style="max-width: 400px;"
+                <div data-role="popup" data-history="false" id="grpDeletePopup" style="max-width: 400px;"
                      class="ui-corner-all">
                     <div data-role="header" data-theme="e" class="ui-corner-top">
                         <h1>Delete?</h1>

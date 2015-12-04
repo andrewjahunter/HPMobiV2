@@ -127,10 +127,11 @@
                             <table width="100%">
                                 <tr>
                                     <td>
-                                        <div class="ui-btn ui-btn-e ui-mini custom-ui-mini ui-btn-inline evNotComing" data-bind="attr: {'data-id': eventId}, visible:(coming === 0) ? false:true  "><small>Not coming</small></div>
-                                        <div class="ui-btn ui-btn-c ui-mini custom-ui-mini ui-btn-inline evComing" data-bind="attr: {'data-id': eventId}, visible:(coming === 1) ? false:true  "><small>Coming</small></div>
-
-
+                                        <!--<div class="ui-btn ui-btn-e ui-mini custom-ui-mini ui-btn-inline evNotComing" data-bind="attr: {'data-id': eventId}, visible:(coming === 0) ? false:true  "><small>Not coming</small></div>
+                                        <div class="ui-btn ui-btn-c ui-mini custom-ui-mini ui-btn-inline evComing" data-bind="attr: {'data-id': eventId}, visible:(coming === 1) ? false:true  "><small>Coming</small></div>-->
+                                        <!--<div class="ui-btn ui-btn-a ui-mini custom-ui-mini ui-btn-inline evWebVersion" data-bind="attr: {'data-id': eventId}  "><small>Web</small></div>-->
+                                        <a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-edit ui-btn-icon-notext ui-btn-inline evWebVersion" data-bind="attr: {'data-id': eventId}  ">Edit</a>
+                                        
                                     </td>
                                     <td align="right">
                                         <div data-bind="visible:(coming === 0) ? true:false  ">
@@ -280,7 +281,7 @@
 
 
 
-                <div data-role="popup" id="popupEventActionsMenu" data-theme="a">
+                <div data-role="popup" data-history="false" id="popupEventActionsMenu" data-theme="a">
                     <ul data-role="listview" class="ui-mini" data-inset="true" style="min-width: 210px;">
 
                         <li><a href="#" id="btnEventViewMap">Get Directions</a></li>
@@ -295,7 +296,7 @@
                     </ul>
                 </div>
 
-                <div data-role="popup" id="evListPmtInstructions" data-theme="a" data-dismissible="false" style="max-width:400px;">
+                <div data-role="popup" data-history="false" id="evListPmtInstructions" data-theme="a" data-dismissible="false" style="max-width:400px;">
                     <div data-role="header" data-theme="a">
                         <h1>Payments</h1>
                     </div>
@@ -309,7 +310,7 @@
                     </div>
                 </div>
 
-                <div data-role="popup" id="popupEventChoosePayment" data-theme="a" data-dismissible="false" style="max-width:400px;">
+                <div data-role="popup" data-history="false" id="popupEventChoosePayment" data-theme="a" data-dismissible="false" style="max-width:400px;">
                     <div data-role="header" data-theme="a">
                         <h1>Payment Option</h1>
                     </div>
@@ -323,7 +324,7 @@
                     </div>
                 </div>
 
-                <div data-role="popup" id="evPopupTicketError" data-dismissible="false" style="max-width:400px;">
+                <div data-role="popup" data-history="false" id="evPopupTicketError" data-dismissible="false" style="max-width:400px;">
                     <div data-role="header" data-theme="e">
                         <h3 style="text-align:center">Problem!</h3>
                     </div>
@@ -335,7 +336,7 @@
                     </div>
                 </div>
 
-                <div data-role="popup" id="popupEvLocalScanSave" data-theme="b" data-dismissible="false" style="max-width:400px;">
+                <div data-role="popup" data-history="false" id="popupEvLocalScanSave" data-theme="b" data-dismissible="false" style="max-width:400px;">
                     <div data-role="header" data-theme="b">
                         <h1>Sync Now?</h1>
                     </div>
@@ -351,7 +352,7 @@
                 </div>
 
 
-                <div data-role="popup" id="popupDeleteDirtyEvRegItems" data-dismissible="false" style="max-width:400px;">
+                <div data-role="popup" data-history="false" id="popupDeleteDirtyEvRegItems" data-dismissible="false" style="max-width:400px;">
                     <div data-role="header" data-theme="e">
                         <h3 style="text-align:center">Delete Changes?</h3>
                     </div>
@@ -363,7 +364,7 @@
                     </div>
                 </div>
 
-                <div data-role="popup" id="evListGoogleFormResponsesPopup" data-dismissible="false">
+                <div data-role="popup" data-history="false" id="evListGoogleFormResponsesPopup" data-dismissible="false">
                     <div data-role="header" data-theme="b" class="ui-corner-top">
                         <h1>Responses</h1>
                     </div>
