@@ -57,8 +57,11 @@
   <gap:plugin name="com.hutchind.cordova.plugins.streamingmedia"  />
   <gap:plugin name="org.apache.cordova.camera"  />
   <gap:plugin name="com.phonegap.plugins.barcodescanner"  />
-  <plugin name="com.indigoway.cordova.whitelist.whitelistplugin"  source="pgb" />
-
+  <plugin name="cordova-plugin-whitelist" >
+    <access origin="*" />
+  </plugin>
+  
+  
   <!--<feature name="http://api.phonegap.com/1.0/device" />-->
   <feature name="http://api.phonegap.com/1.0/geolocation"/>
   <feature name="http://api.phonegap.com/1.0/camera"/>
