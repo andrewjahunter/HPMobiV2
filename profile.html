@@ -13,11 +13,11 @@
     <div data-role="page" id="pg_profile" data-theme="b" data-bind="with:pages.profile.view">
 
         <div data-role="header">
-            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-left ui-icon-arrow-l ui-btn-icon-notext profileView profileAddressListView profileAddressListViewBack  " style="display:none"></a>
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-left ui-icon-arrow-l ui-btn-icon-notext profileView profileAddressListView profileGPath profileBackToProfile  " style="display:none"></a>
          
 
             <!--<a href="#" class="ui-btn ui-btn-a ui-btn-left ui-icon-arrow-l ui-btn-icon-notext profileView profileAccountView  btnBackToPrevPage"></a>-->
-            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-right ui-icon-bars ui-btn-icon-notext profileView profileAccountView profileAddressListView btnOpenAppMenu"></a>
+            <a href="#" class="noBorderButton ui-nodisc-icon ui-btn ui-btn-a ui-btn-right ui-icon-bars ui-btn-icon-notext profileView profileAccountView profileGPath profileAddressListView btnOpenAppMenu"></a>
 
             <h3 id="profileHeader">Profile</h3>
         </div><!-- /header -->
@@ -29,8 +29,11 @@
 
                     <div class="ui-field-contain">
                         <div style="text-align: center; margin-left: auto; margin-right: auto; width:200px">
-                            <img data-bind="attr:{'src':$root.session.fbMd}" id="imgProfileFb" />
-                            <input id="txtFBId" type="text" data-clear-btn="true" data-bind="value: account.facebookId" placeholder="facebook id" data-mini="true" />
+                            <img data-bind="attr:{'src':account.profilePicUrl}" style="max-width:200px" id="imgProfilePic" />
+
+                            <button class="ui-btn ui-btn-a " id="btnEditProfilePic">Change Picture</button>
+
+                            <!--<input id="txtFBId" type="text" data-clear-btn="true" data-bind="value: account.facebookId" placeholder="facebook id" data-mini="true" />-->
                         </div>
                     </div>
 
@@ -177,6 +180,44 @@
 
 
                 </div>
+
+
+
+
+                <div class="profileView profileGPath" style="display:none">
+                    
+
+                    <script id="memGPath-template" type="text/html">
+                        <li>
+                            <div class="ui-bar ui-bar-b">
+                                <div style="text-align: center" data-bind="html: name"></div>
+
+                            </div>
+
+                            <table width="100%">
+
+                                <tbody data-bind="foreach: mappings">
+                                    <tr>
+                                        <td data-bind="text: name"></td>
+
+                                        <td align="right"><input type="checkbox" data-theme="b" data-role="flipswitch" data-off-text="X" data-on-text="✓" data-bind="checked:value,attr:{'data-id':id}" class="ui-mini profileGPathFlipSwitch"></td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                    </script>
+                    <ul data-role="listview" data-inset="true" data-bind="template: { name: 'memGPath-template', foreach: growthPath}"></ul>
+
+                </div>
+
+                <div data-role="popup" data-history="false" id="popupProfilePhotoSource" data-theme="a">
+                    <ul data-role="listview" data-inset="true" style="min-width:210px;">
+                        <li><a href="#" id="btnProfileNewPhoto">Take Picture</a></li>
+                        <li><a href="#" id="btnProfileExistingPhoto">Choose Existing Picture</a></li>
+                    </ul>
+                </div>
+
             </div>
         </div>
         
@@ -189,7 +230,8 @@
                     <!--<li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-qrcode"><small>QrCode</small></div></li>-->
                     <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-location btnProfileAddressListView "><small>Addresses</small></div></li>
                     <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-group btnProfileViewGroupMembership groupsModule "><small>My Groups</small></div></li>
-                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-bullets btnProfileChurchLife customListsModule"><small>Church Life</small></div></li>
+                    <!--<li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-bullets btnProfileChurchLife customListsModule"><small>Church Life</small></div></li>-->
+                    <li><div class="ui-btn ui-btn-g ui-btn-icon-top ui-icon-bullets btnProfileGrowthPath "><small>Growth Path</small></div></li>
 
 
                 </ul>
